@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IMTIIM — Fix Your Resume. Get More Interviews.</title>
+  <title>IMTIIM — Fix Your Resume. Get Hired Faster.</title>
   <style>
-    /* ─── Reset & Base ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --accent:       #4f46e5;
       --accent-light: #eef2ff;
       --accent-dark:  #3730a3;
+      --green:        #16a34a;
+      --green-dark:   #15803d;
       --text:         #0f0f0f;
       --muted:        #6b7280;
       --border:       #e5e7eb;
@@ -24,465 +25,236 @@
     }
 
     html { scroll-behavior: smooth; font-size: 16px; }
-
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
     a { text-decoration: none; color: inherit; }
     img { display: block; max-width: 100%; }
 
-    .container {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-    /* ─── Fade-in Animation ────────────────────────────────────── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .55s ease, transform .55s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* ── Fade-in ── */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── Buttons ──────────────────────────────────────────────── */
+    /* ── Buttons ── */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-size: .95rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      transition: background .2s, transform .15s, box-shadow .2s;
-      white-space: nowrap;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 28px; border-radius: 10px; font-size: .95rem; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: background .2s, transform .15s, box-shadow .2s; white-space: nowrap;
     }
     .btn:active { transform: scale(.97); }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(79,70,229,.35);
-    }
-    .btn-primary:hover {
-      background: var(--accent-dark);
-      box-shadow: 0 6px 20px rgba(79,70,229,.45);
-      transform: translateY(-1px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--accent);
-      border: 2px solid var(--accent);
-    }
-    .btn-outline:hover {
-      background: var(--accent-light);
-      transform: translateY(-1px);
-    }
-
-    .btn-success {
-      background: #16a34a;
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(22,163,74,.3);
-    }
-    .btn-success:hover {
-      background: #15803d;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(22,163,74,.4);
-    }
-
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 14px rgba(79,70,229,.35); }
+    .btn-primary:hover { background: var(--accent-dark); box-shadow: 0 6px 20px rgba(79,70,229,.45); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+    .btn-outline:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .btn-success { background: var(--green); color: #fff; box-shadow: 0 4px 14px rgba(22,163,74,.3); }
+    .btn-success:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(22,163,74,.4); }
+    .btn-white { background: #fff; color: var(--accent); box-shadow: 0 4px 20px rgba(0,0,0,.15); }
+    .btn-white:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.18); }
     .btn-lg { padding: 16px 36px; font-size: 1.05rem; border-radius: 12px; }
 
-    /* ─── NAV ──────────────────────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
-    .nav-logo {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -.5px;
-      color: var(--text);
-    }
+    /* ── NAV ── */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-size: 1.25rem; font-weight: 800; letter-spacing: -.5px; color: var(--text); }
     .nav-logo span { color: var(--accent); }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: .9rem;
-      font-weight: 500;
-      color: var(--muted);
-      transition: color .2s;
-    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: .9rem; font-weight: 500; color: var(--muted); transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
     .nav-cta { display: flex; gap: 10px; align-items: center; }
+    @media (max-width: 768px) { .nav-links { display: none; } .nav-cta .btn-outline { display: none; } }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-cta .btn-outline { display: none; }
-    }
-
-    /* ─── HERO ─────────────────────────────────────────────────── */
+    /* ── HERO ── */
     .hero {
-      padding: 96px 0 80px;
-      text-align: center;
+      padding: 96px 0 80px; text-align: center;
       background: linear-gradient(160deg, #f9f9ff 0%, #ffffff 55%);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
     .hero::before {
-      content: '';
-      position: absolute;
-      top: -180px; right: -180px;
-      width: 520px; height: 520px;
-      border-radius: 50%;
+      content: ''; position: absolute; top: -180px; right: -180px;
+      width: 520px; height: 520px; border-radius: 50%;
       background: radial-gradient(circle, rgba(79,70,229,.10) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-size: .8rem;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 24px;
-      letter-spacing: .3px;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent-light); color: var(--accent);
+      font-size: .8rem; font-weight: 600; padding: 6px 14px;
+      border-radius: 100px; margin-bottom: 24px; letter-spacing: .3px;
     }
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -1.5px;
-      max-width: 760px;
-      margin: 0 auto 20px;
+      font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800;
+      line-height: 1.15; letter-spacing: -1.5px;
+      max-width: 800px; margin: 0 auto 20px;
     }
     .hero h1 span { color: var(--accent); }
-    .hero p {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--muted);
-      max-width: 560px;
-      margin: 0 auto 36px;
-      line-height: 1.65;
-    }
+    .hero p { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--muted); max-width: 600px; margin: 0 auto 36px; line-height: 1.65; }
     .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
     .hero-trust {
-      margin-top: 52px;
-      font-size: .82rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
+      margin-top: 52px; font-size: .82rem; color: var(--muted);
+      display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
     }
     .hero-trust span { display: flex; align-items: center; gap: 4px; }
     .hero-trust .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); }
 
-    /* ─── SECTION COMMON ───────────────────────────────────────── */
+    /* ── SECTION COMMON ── */
     section { padding: 88px 0; }
     .section-alt { background: #f9f9fb; }
-    .section-label {
-      text-align: center;
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-    .section-title {
-      text-align: center;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 14px;
-    }
-    .section-sub {
-      text-align: center;
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 520px;
-      margin: 0 auto 52px;
-    }
+    .section-label { text-align: center; font-size: .78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .section-title { text-align: center; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 14px; }
+    .section-sub { text-align: center; color: var(--muted); font-size: 1rem; max-width: 560px; margin: 0 auto 52px; }
 
-    /* ─── HOW IT WORKS ─────────────────────────────────────────── */
-    .steps-grid {
+    /* ── HOW IT WORKS ── */
+    .how-intro {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
+      margin-bottom: 48px;
     }
-    .step-card {
+    .how-intro-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 32px 28px;
+      padding: 28px 24px;
       box-shadow: var(--shadow);
       transition: box-shadow .25s, transform .25s;
     }
-    .step-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-    .step-num {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
+    .how-intro-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .how-intro-card .step-num {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--accent-light); color: var(--accent);
+      font-weight: 800; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
     }
-    .step-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
-    .step-card p  { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+    .how-intro-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .how-intro-card p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
 
-    /* ─── WHAT YOU GET ─────────────────────────────────────────── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .feature-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+    .plan-tracks { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .track-card {
       border-radius: var(--radius);
-      padding: 26px 24px;
-      box-shadow: var(--shadow);
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
+      padding: 28px 24px;
+      border: 2px solid var(--border);
       transition: box-shadow .25s, transform .25s;
+    }
+    .track-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .track-card.track-starter { border-color: #d1d5db; background: #fafafa; }
+    .track-card.track-pro     { border-color: var(--accent); background: var(--accent-light); }
+    .track-card.track-premium { border-color: #7c3aed; background: #f5f3ff; }
+    .track-badge {
+      display: inline-block; font-size: .75rem; font-weight: 700; padding: 4px 12px;
+      border-radius: 100px; margin-bottom: 14px; letter-spacing: .3px;
+    }
+    .track-starter .track-badge { background: #e5e7eb; color: #374151; }
+    .track-pro .track-badge     { background: var(--accent); color: #fff; }
+    .track-premium .track-badge { background: #7c3aed; color: #fff; }
+    .track-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 12px; }
+    .track-steps { display: flex; flex-direction: column; gap: 10px; }
+    .track-step { display: flex; align-items: flex-start; gap: 10px; font-size: .875rem; color: var(--muted); }
+    .track-step-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; margin-top: 6px; }
+    .track-pro .track-step-dot     { color: var(--accent); }
+    .track-premium .track-step-dot { color: #7c3aed; }
+    .track-starter .track-step-dot { color: #9ca3af; }
+    .track-step strong { color: var(--text); }
+
+    /* ── WHAT YOU GET ── */
+    .features-hero-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .feature-card {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 26px 24px; box-shadow: var(--shadow);
+      display: flex; align-items: flex-start; gap: 16px;
+      transition: box-shadow .25s, transform .25s;
+      position: relative; overflow: hidden;
+    }
+    .feature-card.highlight {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, #fefefe 0%, var(--accent-light) 100%);
+    }
+    .feature-card.highlight::before {
+      content: '★ Most Valued';
+      position: absolute; top: 12px; right: 14px;
+      font-size: .68rem; font-weight: 700; color: var(--accent);
+      background: rgba(79,70,229,.1); padding: 2px 8px; border-radius: 100px;
     }
     .feature-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
     .feature-icon {
-      width: 42px; height: 42px;
-      border-radius: 10px;
-      background: var(--accent-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1.15rem;
+      width: 46px; height: 46px; border-radius: 12px;
+      background: var(--accent-light); display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0; font-size: 1.2rem;
     }
-    .feature-text h4 { font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
-    .feature-text p  { font-size: .85rem; color: var(--muted); line-height: 1.5; }
+    .feature-card.highlight .feature-icon { background: rgba(79,70,229,.15); }
+    .feature-text h4 { font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+    .feature-text p  { font-size: .85rem; color: var(--muted); line-height: 1.55; }
+    .feature-text .feature-tag {
+      display: inline-block; margin-top: 8px;
+      font-size: .72rem; font-weight: 600; padding: 2px 8px;
+      border-radius: 100px; background: var(--accent-light); color: var(--accent);
+    }
+    @media (max-width: 640px) { .features-hero-row { grid-template-columns: 1fr; } }
 
-    /* ─── EXPERTS ──────────────────────────────────────────────── */
-    .experts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-    .expert-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      text-align: center;
-      box-shadow: var(--shadow);
-      transition: box-shadow .25s, transform .25s;
-    }
-    .expert-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-    .expert-avatar {
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      margin: 0 auto 16px;
-      overflow: hidden;
-      border: 3px solid var(--accent-light);
-      background: linear-gradient(135deg, #c7d2fe 0%, #818cf8 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    .expert-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
-    .expert-card .role { font-size: .85rem; color: var(--muted); margin-bottom: 8px; }
-    .expert-badge {
-      display: inline-block;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-size: .75rem;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 100px;
-    }
-
-    /* ─── PRICING ──────────────────────────────────────────────── */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      align-items: stretch;
-    }
+    /* ── PRICING ── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: stretch; }
     .price-card {
-      background: var(--card-bg);
-      border: 2px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px 28px;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      background: var(--card-bg); border: 2px solid var(--border); border-radius: var(--radius);
+      padding: 36px 28px; box-shadow: var(--shadow);
+      display: flex; flex-direction: column; gap: 20px;
       transition: box-shadow .25s, transform .25s, border-color .25s;
-      cursor: pointer;
-      position: relative;
+      cursor: pointer; position: relative;
     }
     .price-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-    .price-card.popular {
-      border-color: var(--accent);
-      box-shadow: 0 8px 32px rgba(79,70,229,.18);
-    }
-    .price-card.selected {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(79,70,229,.15), var(--shadow-md);
-    }
+    .price-card.popular { border-color: var(--accent); box-shadow: 0 8px 32px rgba(79,70,229,.18); }
+    .price-card.selected { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(79,70,229,.15), var(--shadow-md); }
     .popular-badge {
-      position: absolute;
-      top: -14px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: #fff;
-      font-size: .75rem;
-      font-weight: 700;
-      padding: 5px 16px;
-      border-radius: 100px;
-      letter-spacing: .5px;
-      white-space: nowrap;
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #fff; font-size: .75rem; font-weight: 700;
+      padding: 5px 16px; border-radius: 100px; letter-spacing: .5px; white-space: nowrap;
     }
     .price-header h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
-    .price-amount {
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-      color: var(--text);
-    }
+    .price-tagline { font-size: .82rem; color: var(--muted); margin-bottom: 2px; font-style: italic; }
+    .price-amount { font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; color: var(--text); }
     .price-amount span { font-size: 1rem; font-weight: 500; color: var(--muted); }
     .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-    .price-features li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: .9rem;
-      color: var(--muted);
-    }
+    .price-features li { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; color: var(--muted); }
     .price-features li::before {
-      content: '✓';
-      width: 20px; height: 20px;
-      background: var(--accent-light);
-      color: var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .75rem;
-      font-weight: 700;
-      flex-shrink: 0;
+      content: '✓'; width: 20px; height: 20px; background: var(--accent-light); color: var(--accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: .75rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;
     }
-
-    /* Two-button layout inside each pricing card */
-    .price-card-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .price-card-actions { display: flex; flex-direction: column; gap: 10px; }
     .plan-select-btn {
-      width: 100%;
-      padding: 13px;
-      border-radius: 10px;
-      font-size: .92rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: 2px solid var(--border);
-      background: transparent;
-      color: var(--text);
-      transition: all .2s;
+      width: 100%; padding: 13px; border-radius: 10px;
+      font-size: .92rem; font-weight: 600; cursor: pointer;
+      border: 2px solid var(--border); background: transparent; color: var(--text); transition: all .2s;
     }
     .plan-select-btn:hover,
-    .price-card.selected .plan-select-btn,
-    .price-card.popular .plan-select-btn {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-    .price-card.selected .plan-select-btn {
-      background: var(--accent-dark);
-      border-color: var(--accent-dark);
-    }
+    .price-card.popular .plan-select-btn { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .price-card.selected .plan-select-btn { background: var(--accent-dark); color: #fff; border-color: var(--accent-dark); }
     .pay-now-btn {
-      width: 100%;
-      padding: 13px;
-      border-radius: 10px;
-      font-size: .92rem;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      background: #16a34a;
-      color: #fff;
+      width: 100%; padding: 13px; border-radius: 10px;
+      font-size: .92rem; font-weight: 700; cursor: pointer; border: none;
+      background: var(--green); color: #fff;
       transition: background .2s, transform .15s, box-shadow .2s;
       box-shadow: 0 3px 10px rgba(22,163,74,.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
     }
-    .pay-now-btn:hover {
-      background: #15803d;
-      transform: translateY(-1px);
-      box-shadow: 0 5px 16px rgba(22,163,74,.35);
-    }
+    .pay-now-btn:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 5px 16px rgba(22,163,74,.35); }
 
-    /* ─── PAYMENT MODAL ────────────────────────────────────────── */
+    /* ── PAYMENT MODAL ── */
     .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.55);
-      backdrop-filter: blur(6px);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.55); backdrop-filter: blur(6px);
+      z-index: 999; align-items: center; justify-content: center; padding: 20px;
     }
     .modal-overlay.open { display: flex; }
-
     .modal-box {
-      background: #fff;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 540px;
-      max-height: 90vh;
-      overflow-y: auto;
+      background: #fff; border-radius: 20px; width: 100%; max-width: 560px;
+      max-height: 92vh; overflow-y: auto;
       box-shadow: 0 24px 80px rgba(0,0,0,.25);
       animation: modalIn .3s cubic-bezier(.34,1.56,.64,1) both;
     }
@@ -490,220 +262,160 @@
       from { opacity: 0; transform: scale(.9) translateY(20px); }
       to   { opacity: 1; transform: scale(1) translateY(0); }
     }
-
     .modal-header {
-      padding: 24px 28px 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
+      padding: 24px 28px 0; display: flex;
+      align-items: flex-start; justify-content: space-between; gap: 12px;
     }
-    .modal-header-text h3 {
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-    .modal-header-text p { font-size: .88rem; color: var(--muted); }
+    .modal-header-text h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; }
+    .modal-header-text p  { font-size: .88rem; color: var(--muted); }
     .modal-close {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      border: none;
-      background: #f3f4f6;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background .2s;
+      width: 36px; height: 36px; border-radius: 50%; border: none;
+      background: #f3f4f6; font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background .2s;
     }
     .modal-close:hover { background: #e5e7eb; }
 
+    /* Modal step screens */
+    .modal-screen { display: none; }
+    .modal-screen.active { display: block; }
+
+    /* Plan picker inside modal */
+    .modal-plan-picker { padding: 20px 28px; display: flex; flex-direction: column; gap: 12px; }
+    .modal-plan-option {
+      border: 2px solid var(--border); border-radius: 12px; padding: 16px 18px;
+      cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: space-between;
+    }
+    .modal-plan-option:hover { border-color: var(--accent); background: var(--accent-light); }
+    .modal-plan-option.active { border-color: var(--accent); background: var(--accent-light); }
+    .modal-plan-option.popular-option { border-color: var(--accent); }
+    .mpo-left { display: flex; align-items: center; gap: 12px; }
+    .mpo-radio {
+      width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s;
+    }
+    .modal-plan-option.active .mpo-radio,
+    .modal-plan-option:hover .mpo-radio { border-color: var(--accent); }
+    .modal-plan-option.active .mpo-radio::after {
+      content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
+    }
+    .mpo-info { display: flex; flex-direction: column; }
+    .mpo-name { font-weight: 700; font-size: .95rem; }
+    .mpo-desc { font-size: .8rem; color: var(--muted); margin-top: 2px; }
+    .mpo-price { font-weight: 800; font-size: 1.1rem; color: var(--text); }
+    .mpo-popular {
+      font-size: .7rem; font-weight: 700; background: var(--accent); color: #fff;
+      padding: 2px 8px; border-radius: 100px; margin-left: 8px;
+    }
+
+    /* QR screen */
     .modal-plan-badge {
       margin: 16px 28px 0;
-      background: var(--accent-light);
-      border: 1px solid #c7d2fe;
-      border-radius: 10px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background: var(--accent-light); border: 1px solid #c7d2fe;
+      border-radius: 10px; padding: 12px 16px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .modal-plan-badge .plan-name {
-      font-weight: 700;
-      font-size: .95rem;
-      color: var(--accent);
-    }
-    .modal-plan-badge .plan-price {
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: var(--text);
-    }
-
+    .modal-plan-badge .plan-name { font-weight: 700; font-size: .95rem; color: var(--accent); }
+    .modal-plan-badge .plan-price { font-weight: 800; font-size: 1.1rem; color: var(--text); }
     .modal-steps {
-      margin: 20px 28px 0;
-      background: #f9fafb;
-      border-radius: 12px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      margin: 16px 28px 0; background: #f9fafb; border-radius: 12px;
+      padding: 16px; display: flex; flex-direction: column; gap: 12px;
     }
-    .modal-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: .88rem;
-      color: var(--muted);
-    }
+    .modal-step { display: flex; align-items: flex-start; gap: 12px; font-size: .88rem; color: var(--muted); }
     .modal-step-num {
-      width: 24px; height: 24px;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 50%;
-      font-size: .72rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      width: 24px; height: 24px; background: var(--accent); color: #fff; border-radius: 50%;
+      font-size: .72rem; font-weight: 700; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
     }
     .modal-step strong { color: var(--text); display: block; margin-bottom: 2px; }
+    .modal-qr-section { margin: 20px 28px 0; text-align: center; }
+    .modal-qr-section p { font-size: .82rem; color: var(--muted); margin-bottom: 12px; }
+    .modal-footer { padding: 20px 28px 28px; display: flex; flex-direction: column; gap: 10px; }
+    .modal-footer-note { text-align: center; font-size: .78rem; color: var(--muted); }
+    .modal-back-btn {
+      background: none; border: none; color: var(--accent); font-size: .85rem;
+      font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px;
+      padding: 0 28px 0; margin-top: 8px;
+    }
+    .modal-back-btn:hover { text-decoration: underline; }
 
-    .modal-qr-section {
-      margin: 0 28px;
-      text-align: center;
+    /* ── EXPERTS ── */
+    .experts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+    .expert-card {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 32px 28px; box-shadow: var(--shadow); transition: box-shadow .25s, transform .25s;
     }
-    .modal-qr-section p {
-      font-size: .82rem;
-      color: var(--muted);
-      margin-bottom: 12px;
+    .expert-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .expert-top { display: flex; align-items: center; gap: 18px; margin-bottom: 16px; }
+    .expert-avatar {
+      width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+      border: 3px solid var(--accent-light);
+      background: linear-gradient(135deg, #c7d2fe 0%, #818cf8 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; font-weight: 800; color: var(--accent);
     }
-    .modal-footer {
-      padding: 20px 28px 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .expert-info h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 2px; }
+    .expert-info .role { font-size: .85rem; color: var(--muted); margin-bottom: 6px; }
+    .expert-badge {
+      display: inline-block; background: var(--accent-light); color: var(--accent);
+      font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 100px;
     }
-    .modal-footer-note {
-      text-align: center;
-      font-size: .78rem;
-      color: var(--muted);
+    .expert-quote {
+      font-size: .88rem; color: #374151; line-height: 1.65;
+      font-style: italic; border-left: 3px solid var(--accent-light); padding-left: 14px;
     }
 
-    /* ─── TESTIMONIALS ─────────────────────────────────────────── */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
     .testi-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      transition: box-shadow .25s, transform .25s;
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px 24px; box-shadow: var(--shadow);
+      display: flex; flex-direction: column; gap: 16px; transition: box-shadow .25s, transform .25s;
     }
     .testi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
     .testi-stars { color: #f59e0b; font-size: 1rem; letter-spacing: 2px; }
     .testi-quote { font-size: .92rem; color: var(--muted); line-height: 1.65; font-style: italic; }
     .testi-author { display: flex; align-items: center; gap: 12px; }
     .testi-avatar {
-      width: 44px; height: 44px;
-      border-radius: 50%;
+      width: 44px; height: 44px; border-radius: 50%;
       background: linear-gradient(135deg, #c7d2fe 0%, #818cf8 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: .95rem;
-      color: var(--accent);
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .95rem; color: var(--accent); flex-shrink: 0;
     }
     .testi-name { font-weight: 700; font-size: .9rem; }
     .testi-role { font-size: .8rem; color: var(--muted); }
 
-    /* ─── WHO IT'S FOR ─────────────────────────────────────────── */
-    .who-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
+    /* ── WHO IT'S FOR ── */
+    .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
     .who-item {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      box-shadow: var(--shadow);
-      font-size: .92rem;
-      font-weight: 500;
-      transition: box-shadow .2s, transform .2s;
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 22px 20px; display: flex; align-items: flex-start; gap: 14px;
+      box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s;
     }
     .who-item:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
     .who-icon {
-      width: 38px; height: 38px;
-      border-radius: 10px;
-      background: var(--accent-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 10px; background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
     }
+    .who-text h4 { font-size: .9rem; font-weight: 700; margin-bottom: 3px; }
+    .who-text p  { font-size: .82rem; color: var(--muted); line-height: 1.5; }
 
-    /* ─── FINAL CTA ────────────────────────────────────────────── */
-    .cta-section {
-      background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
-      padding: 96px 0;
-      text-align: center;
-    }
+    /* ── FINAL CTA ── */
+    .cta-section { background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%); padding: 96px 0; text-align: center; }
     .cta-section h2 {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -1px;
-      margin-bottom: 16px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: #fff;
+      letter-spacing: -1px; margin-bottom: 16px; max-width: 640px; margin-left: auto; margin-right: auto;
     }
-    .cta-section p {
-      color: rgba(255,255,255,.75);
-      font-size: 1.05rem;
-      margin-bottom: 36px;
-    }
-    .btn-white {
-      background: #fff;
-      color: var(--accent);
-      box-shadow: 0 4px 20px rgba(0,0,0,.15);
-    }
-    .btn-white:hover {
-      background: var(--accent-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0,0,0,.18);
-    }
+    .cta-section p { color: rgba(255,255,255,.75); font-size: 1.05rem; margin-bottom: 36px; }
     .cta-note { margin-top: 18px; color: rgba(255,255,255,.55); font-size: .82rem; }
 
-    /* ─── FOOTER ───────────────────────────────────────────────── */
-    footer {
-      background: #0f0f0f;
-      color: rgba(255,255,255,.45);
-      padding: 40px 0;
-      text-align: center;
-      font-size: .85rem;
-    }
+    /* ── FOOTER ── */
+    footer { background: #0f0f0f; color: rgba(255,255,255,.45); padding: 40px 0; text-align: center; font-size: .85rem; }
     .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; }
     .footer-logo { font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: -.5px; }
     .footer-logo span { color: #818cf8; }
 
-    /* ─── RESPONSIVE ───────────────────────────────────────────── */
+    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       section { padding: 64px 0; }
       .hero { padding: 72px 0 60px; }
@@ -711,71 +423,123 @@
       .btn-lg { width: 100%; max-width: 320px; text-align: center; }
       .pricing-grid { grid-template-columns: 1fr; }
       .price-card.popular { margin-top: 16px; }
-      .modal-header, .modal-plan-badge, .modal-steps, .modal-qr-section { margin-left: 18px; margin-right: 18px; }
-      .modal-footer { padding: 16px 18px 22px; }
+      .modal-plan-picker, .modal-footer { padding-left: 18px; padding-right: 18px; }
+      .modal-plan-badge, .modal-steps, .modal-qr-section { margin-left: 18px; margin-right: 18px; }
+      .plan-tracks { grid-template-columns: 1fr; }
+      .how-intro { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── PAYMENT MODAL ─────────────────────────────────────────── -->
+  <!-- ══ PAYMENT MODAL ══════════════════════════════════════════ -->
   <div class="modal-overlay" id="paymentModal" onclick="closeModalOutside(event)">
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
 
-      <div class="modal-header">
-        <div class="modal-header-text">
-          <h3 id="modalTitle">Complete Your Payment</h3>
-          <p>Scan the QR code below to pay securely</p>
+      <!-- SCREEN 1: Plan Picker -->
+      <div class="modal-screen active" id="screenPicker">
+        <div class="modal-header">
+          <div class="modal-header-text">
+            <h3 id="modalTitle">Choose Your Plan</h3>
+            <p>Select what works best for you, then pay securely via UPI</p>
+          </div>
+          <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
         </div>
-        <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+        <div class="modal-plan-picker">
+          <!-- Starter -->
+          <div class="modal-plan-option" id="mpo-starter" onclick="pickModalPlan('starter','₹99','Starter Plan')">
+            <div class="mpo-left">
+              <div class="mpo-radio"></div>
+              <div class="mpo-info">
+                <span class="mpo-name">Starter — ₹99</span>
+                <span class="mpo-desc">AI-corrected resume delivered to your email within 24 hrs</span>
+              </div>
+            </div>
+            <span class="mpo-price">₹99</span>
+          </div>
+          <!-- Pro -->
+          <div class="modal-plan-option popular-option" id="mpo-pro" onclick="pickModalPlan('pro','₹999','Pro Plan')">
+            <div class="mpo-left">
+              <div class="mpo-radio"></div>
+              <div class="mpo-info">
+                <span class="mpo-name">Pro — ₹999 <span class="mpo-popular">Most Popular</span></span>
+                <span class="mpo-desc">AI resume + 1 live session with an IMT/IIM graduate</span>
+              </div>
+            </div>
+            <span class="mpo-price">₹999</span>
+          </div>
+          <!-- Premium -->
+          <div class="modal-plan-option" id="mpo-premium" onclick="pickModalPlan('premium','₹1,499','Premium Plan')">
+            <div class="mpo-left">
+              <div class="mpo-radio"></div>
+              <div class="mpo-info">
+                <span class="mpo-name">Premium — ₹1,499</span>
+                <span class="mpo-desc">AI resume + 3 live sessions + LinkedIn + outreach strategy</span>
+              </div>
+            </div>
+            <span class="mpo-price">₹1,499</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary btn-lg" style="width:100%;" onclick="goToPayScreen()">
+            Continue to Payment →
+          </button>
+          <p class="modal-footer-note">🔒 Secure UPI payment · No hidden charges · Cancel anytime</p>
+        </div>
       </div>
 
-      <!-- Selected plan summary -->
-      <div class="modal-plan-badge">
-        <span class="plan-name" id="modalPlanName">Starter Plan</span>
-        <span class="plan-price" id="modalPlanPrice">₹99</span>
-      </div>
-
-      <!-- Steps -->
-      <div class="modal-steps">
-        <div class="modal-step">
-          <div class="modal-step-num">1</div>
-          <div><strong>Scan &amp; Pay</strong>Use the QR code below to complete your payment via UPI / any app.</div>
+      <!-- SCREEN 2: QR Payment -->
+      <div class="modal-screen" id="screenPay">
+        <div class="modal-header">
+          <div class="modal-header-text">
+            <h3>Complete Payment</h3>
+            <p>Scan the QR code below to pay securely</p>
+          </div>
+          <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
         </div>
-        <div class="modal-step">
-          <div class="modal-step-num">2</div>
-          <div><strong>Save your screenshot</strong>Take a screenshot of the payment confirmation.</div>
-        </div>
-        <div class="modal-step">
-          <div class="modal-step-num">3</div>
-          <div><strong>Submit your resume</strong>Click the button below — it opens our form where you upload your resume &amp; payment proof.</div>
-        </div>
-      </div>
+        <button class="modal-back-btn" onclick="goToPlanPicker()">← Change Plan</button>
 
-      <!-- QR Image -->
-      <div class="modal-qr-section" style="margin-top:20px;">
-        <p>👇 Scan with any UPI app (PhonePe, GPay, Paytm, etc.)</p>
-        <img
-          src="payment.jpeg"
-          alt="Payment QR Code"
-          style="width:100%; max-width:320px; border-radius:12px; margin:0 auto; display:block; border:1px solid var(--border);"
-        />
-      </div>
+        <div class="modal-plan-badge">
+          <span class="plan-name" id="modalPlanName">Pro Plan</span>
+          <span class="plan-price" id="modalPlanPrice">₹999</span>
+        </div>
 
-      <!-- Footer actions -->
-      <div class="modal-footer">
-        <button class="btn btn-success btn-lg" style="width:100%;" onclick="proceedAfterPayment()">
-          ✅ I've Paid — Submit My Resume →
-        </button>
-        <p class="modal-footer-note">
-          🔒 Secure · Results within 24 hours · No subscription required
-        </p>
+        <div class="modal-steps">
+          <div class="modal-step">
+            <div class="modal-step-num">1</div>
+            <div><strong>Scan &amp; Pay</strong>Use the QR below via PhonePe, GPay, Paytm or any UPI app.</div>
+          </div>
+          <div class="modal-step">
+            <div class="modal-step-num">2</div>
+            <div><strong>Screenshot your confirmation</strong>Save proof of payment — you'll upload it in the next step.</div>
+          </div>
+          <div class="modal-step">
+            <div class="modal-step-num">3</div>
+            <div><strong>Submit your resume</strong>Click below to open our form — upload your resume &amp; payment proof.</div>
+          </div>
+        </div>
+
+        <div class="modal-qr-section">
+          <p>👇 Scan with any UPI app</p>
+          <img
+            src="Payment.jpeg"
+            alt="Payment QR Code"
+            style="width:100%; max-width:300px; border-radius:14px; margin:0 auto; display:block; border:1px solid var(--border);"
+          />
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-success btn-lg" style="width:100%;" onclick="proceedAfterPayment()">
+            ✅ I've Paid — Submit My Resume →
+          </button>
+          <p class="modal-footer-note">🔒 Secure · Results within 24 hours · No subscription</p>
+        </div>
       </div>
 
     </div>
   </div>
 
-  <!-- ── NAV ─────────────────────────────────────────────────── -->
+  <!-- ══ NAV ════════════════════════════════════════════════════ -->
   <nav>
     <div class="container nav-inner">
       <div class="nav-logo">IMT<span>IIM</span></div>
@@ -787,34 +551,30 @@
       </ul>
       <div class="nav-cta">
         <a href="#pricing" class="btn btn-outline">View Plans</a>
-        <button class="btn btn-primary" onclick="openPaymentModal()">Pay &amp; Get Started</button>
+        <button class="btn btn-primary" onclick="openPaymentModal()">Get Started</button>
       </div>
     </div>
   </nav>
 
-  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <!-- ══ HERO ═══════════════════════════════════════════════════ -->
   <section class="hero">
     <div class="container">
-      <div class="hero-badge">
-        ✦ Trusted by 2,000+ job seekers across India
-      </div>
+      <div class="hero-badge">✦ Trusted by 2,000+ job seekers across India</div>
       <h1 class="fade-in">
-        Fix Your Resume.<br/>
-        <span>Get More Interviews.</span>
+        Stop Getting Ignored.<br/>
+        <span>Start Getting Hired.</span>
       </h1>
       <p class="fade-in">
-        Combine AI speed with expert review from top-tier professionals (IMT, IIM) to get shortlisted faster.
+        We don't just fix your resume with AI — we pair you with real graduates from IMT &amp; IIM for 1-on-1 career sessions that turn applications into offers.
       </p>
       <div class="hero-actions fade-in">
-        <button class="btn btn-primary btn-lg" onclick="openPaymentModal()">
-          ↑ Upload Resume
-        </button>
+        <button class="btn btn-primary btn-lg" onclick="openPaymentModal()">🚀 Get Started — Choose a Plan</button>
         <a href="#how-it-works" class="btn btn-outline btn-lg">See How It Works</a>
       </div>
       <div class="hero-trust fade-in">
-        <span>⚡ Results in 24 hours</span>
+        <span>⚡ Resume delivered in 24 hrs</span>
         <span class="dot"></span>
-        <span>🎓 IIM &amp; IMT Experts</span>
+        <span>🎓 Real IMT &amp; IIM mentors</span>
         <span class="dot"></span>
         <span>✅ ATS-Optimized</span>
         <span class="dot"></span>
@@ -823,220 +583,290 @@
     </div>
   </section>
 
-  <!-- ── HOW IT WORKS ─────────────────────────────────────────── -->
+  <!-- ══ HOW IT WORKS ═══════════════════════════════════════════ -->
   <section id="how-it-works" class="section-alt">
     <div class="container">
       <p class="section-label fade-in">Process</p>
       <h2 class="section-title fade-in">How It Works</h2>
-      <p class="section-sub fade-in">Three simple steps to a resume that actually lands interviews.</p>
-      <div class="steps-grid">
-        <div class="step-card fade-in">
+      <p class="section-sub fade-in">One upload. A tailored experience based on the plan you choose — from AI-only to full expert mentoring.</p>
+
+      <!-- Step 1 + Step 2 shared intro -->
+      <div class="how-intro">
+        <div class="how-intro-card fade-in">
           <div class="step-num">1</div>
           <h3>Upload Your Resume</h3>
-          <p>Share your current resume via our secure form. Takes less than 60 seconds — no account needed.</p>
+          <p>Submit your current CV through our secure Google Form. Attach your payment screenshot. Takes under 2 minutes — no account, no signup needed.</p>
         </div>
-        <div class="step-card fade-in">
+        <div class="how-intro-card fade-in">
           <div class="step-num">2</div>
-          <h3>AI Optimizes + Expert Reviews</h3>
-          <p>Our AI rewrites and structures your resume for ATS systems, then a verified expert adds the human touch.</p>
+          <h3>We Get to Work</h3>
+          <p>Based on your plan, our AI engine begins restructuring your resume for ATS systems — and if you've picked Pro or Premium, we schedule your live session with an IMT/IIM expert immediately.</p>
         </div>
-        <div class="step-card fade-in">
-          <div class="step-num">3</div>
-          <h3>Get Results in 24 Hours</h3>
-          <p>Receive your polished, interview-ready resume along with tailored LinkedIn and outreach assets.</p>
+      </div>
+
+      <!-- Plan-specific tracks -->
+      <p style="text-align:center; font-weight:700; font-size:.85rem; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:20px;" class="fade-in">Then — here's what happens based on your plan</p>
+      <div class="plan-tracks">
+        <div class="track-card track-starter fade-in">
+          <span class="track-badge">Starter — ₹99</span>
+          <h3>AI-Powered Resume Fix</h3>
+          <div class="track-steps">
+            <div class="track-step"><div class="track-step-dot"></div><span>Our AI engine scans &amp; rewrites your CV for ATS keywords and formatting</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span><strong>Strong bullet points</strong> with impact metrics replace weak generic lines</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span>Grammar, spacing &amp; layout are polished for a premium look</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span><strong>Revised resume sent to your email within 24 hours</strong></span></div>
+          </div>
+        </div>
+        <div class="track-card track-pro fade-in">
+          <span class="track-badge">Pro — ₹999</span>
+          <h3>AI Fix + 1 Expert Session</h3>
+          <div class="track-steps">
+            <div class="track-step"><div class="track-step-dot"></div><span>Everything in Starter — full AI resume optimization</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span><strong>1 live 1-on-1 video session</strong> with an IMT or IIM graduate who works in your target industry</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span>Personalized feedback on resume, positioning &amp; job strategy</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span>Insider tips on what hiring managers in your field actually look for</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span><strong>Session scheduled within 48 hours of payment</strong></span></div>
+          </div>
+        </div>
+        <div class="track-card track-premium fade-in">
+          <span class="track-badge">Premium — ₹1,499</span>
+          <h3>AI + 3 Sessions + Full Strategy</h3>
+          <div class="track-steps">
+            <div class="track-step"><div class="track-step-dot"></div><span>Everything in Pro — AI resume + 1st expert session</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span><strong>3 total 1-on-1 sessions</strong> with your assigned IMT/IIM mentor over the course of your job search</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span>LinkedIn headline, summary &amp; profile rewrite included</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span>Cold DM &amp; email outreach templates to reach hiring managers directly</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span><strong>Full job-search roadmap</strong> — who to reach, when &amp; how</span></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── WHAT YOU GET ─────────────────────────────────────────── -->
+  <!-- ══ WHAT YOU GET ════════════════════════════════════════════ -->
   <section id="features">
     <div class="container">
       <p class="section-label fade-in">Deliverables</p>
-      <h2 class="section-title fade-in">What You Get</h2>
-      <p class="section-sub fade-in">Everything you need to go from invisible to interview-ready.</p>
-      <div class="features-grid">
-        <div class="feature-card fade-in">
+      <h2 class="section-title fade-in">Everything You Need to Get Hired</h2>
+      <p class="section-sub fade-in">Not just a polished document — a complete toolkit built to get you in the room.</p>
+
+      <div class="features-hero-row">
+        <div class="feature-card highlight fade-in">
           <div class="feature-icon">📄</div>
           <div class="feature-text">
-            <h4>ATS-Optimized Resume</h4>
-            <p>Passes automated screening filters so your resume actually reaches humans.</p>
+            <h4>ATS-Beating Resume</h4>
+            <p>Most resumes never reach a human because they fail automated screening. We rebuild yours from scratch — right keywords, right structure, right formatting — so it lands in the "Yes" pile every time.</p>
+            <span class="feature-tag">All Plans</span>
           </div>
         </div>
+        <div class="feature-card highlight fade-in">
+          <div class="feature-icon">🎙️</div>
+          <div class="feature-text">
+            <h4>1-on-1 Expert Session (Pro &amp; Premium)</h4>
+            <p>This is where real change happens. A verified IMT or IIM graduate sits with you, reviews your profile, and tells you exactly what to fix, how to position yourself, and where to apply — based on their own hiring experience.</p>
+            <span class="feature-tag">Pro &amp; Premium</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="features-grid">
         <div class="feature-card fade-in">
           <div class="feature-icon">✍️</div>
           <div class="feature-text">
-            <h4>Strong Bullets &amp; Metrics</h4>
-            <p>Impact-first bullet points with quantified achievements that impress hiring managers.</p>
+            <h4>Punchy Bullet Points with Numbers</h4>
+            <p>Vague duties get replaced with sharp, metric-driven achievements. "Managed social media" becomes "Grew Instagram from 2K to 18K followers in 6 months." Hiring managers notice the difference instantly.</p>
           </div>
         </div>
         <div class="feature-card fade-in">
           <div class="feature-icon">💼</div>
           <div class="feature-text">
-            <h4>LinkedIn Headline &amp; Summary</h4>
-            <p>A magnetic LinkedIn profile that attracts recruiters and turns views into messages.</p>
+            <h4>LinkedIn Profile Rewrite</h4>
+            <p>Your LinkedIn is your digital first impression. We craft a headline and summary that make recruiters stop scrolling — and actually message you. Available in Premium.</p>
+            <span class="feature-tag">Premium</span>
           </div>
         </div>
         <div class="feature-card fade-in">
           <div class="feature-icon">📩</div>
           <div class="feature-text">
-            <h4>Cold DM Templates</h4>
-            <p>Proven outreach scripts to land referrals and direct responses from decision-makers.</p>
+            <h4>Cold DM &amp; Outreach Templates</h4>
+            <p>Most people wait. We show you how to reach hiring managers, alumni, and decision-makers directly — with scripts that actually get replies, not silence.</p>
+            <span class="feature-tag">Premium</span>
           </div>
         </div>
         <div class="feature-card fade-in">
-          <div class="feature-icon">🎙️</div>
+          <div class="feature-icon">🎯</div>
           <div class="feature-text">
-            <h4>Optional Expert Review Call</h4>
-            <p>1-on-1 session with a top-tier professional for deep personalised feedback.</p>
+            <h4>Job Search Roadmap</h4>
+            <p>Where to apply, which companies to target, when to follow up — your expert builds a week-by-week plan so you're not spraying and praying. Structure beats luck every time.</p>
+            <span class="feature-tag">Premium</span>
           </div>
         </div>
         <div class="feature-card fade-in">
-          <div class="feature-icon">🚀</div>
+          <div class="feature-icon">⚡</div>
           <div class="feature-text">
-            <h4>Outreach Strategy</h4>
-            <p>Step-by-step plan to reach out to companies and multiply your interview chances.</p>
+            <h4>24-Hour Turnaround</h4>
+            <p>No waiting weeks. Your AI-optimized resume is back in your inbox within 24 hours of submission. Expert sessions are scheduled within 48 hours so you keep moving.</p>
+          </div>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🔐</div>
+          <div class="feature-text">
+            <h4>100% Confidential</h4>
+            <p>Your resume, details, and sessions are completely private. We never share your information. What happens in your session stays in your session.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── EXPERTS ──────────────────────────────────────────────── -->
-  <section id="experts" class="section-alt">
-    <div class="container">
-      <p class="section-label fade-in">Our Reviewers</p>
-      <h2 class="section-title fade-in">Reviewed by Top Talent</h2>
-      <p class="section-sub fade-in">Every resume is reviewed by professionals who've been on both sides of the hiring table.</p>
-      <div class="experts-grid">
-        <div class="expert-card fade-in">
-          <div class="expert-avatar">AK</div>
-          <h3>Arjun Kapoor</h3>
-          <p class="role">Senior Consultant, BCG</p>
-          <span class="expert-badge">IMT Ghaziabad Graduate</span>
-        </div>
-        <div class="expert-card fade-in">
-          <div class="expert-avatar">PS</div>
-          <h3>Mudit Sahai</h3>
-          <p class="role">Assistant Brand Manager | Unilever | AWL</p>
-          <span class="expert-badge">IMT Ghaziabad — Marketing</span>
-        </div>
-        <div class="expert-card fade-in">
-          <div class="expert-avatar">RV</div>
-          <h3>Rohan Verma</h3>
-          <p class="role">Product Manager, Flipkart</p>
-          <span class="expert-badge">IIM Bangalore Graduate</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── PRICING ──────────────────────────────────────────────── -->
+  <!-- ══ PRICING ════════════════════════════════════════════════ -->
   <section id="pricing">
     <div class="container">
       <p class="section-label fade-in">Pricing</p>
-      <h2 class="section-title fade-in">Simple, Transparent Pricing</h2>
-      <p class="section-sub fade-in">Pick a plan, pay securely via QR, and we'll handle the rest.</p>
+      <h2 class="section-title fade-in">Simple, Honest Pricing</h2>
+      <p class="section-sub fade-in">Pay once. No subscriptions. No hidden fees. Just results within 24 hours.</p>
       <div class="pricing-grid">
 
         <!-- Starter -->
-        <div class="price-card fade-in" id="plan-starter" onclick="selectPlan('starter', '₹99')">
+        <div class="price-card fade-in" id="plan-starter" onclick="selectPlan('starter','₹99')">
           <div class="price-header">
             <h3>Starter</h3>
+            <p class="price-tagline">For candidates who need a strong CV fast</p>
             <div class="price-amount">₹99 <span>one-time</span></div>
           </div>
           <ul class="price-features">
-            <li>AI Resume Optimization</li>
-            <li>ATS Score Report</li>
-            <li>Grammar &amp; Formatting Fixes</li>
-            <li>Keyword Enhancement</li>
+            <li>Full AI Resume Optimization</li>
+            <li>ATS Keyword Restructuring</li>
+            <li>Impact Bullet Point Rewrites</li>
+            <li>Grammar, Formatting &amp; Layout Fix</li>
+            <li>Polished CV delivered to email in 24 hrs</li>
           </ul>
           <div class="price-card-actions">
-            <button class="plan-select-btn" onclick="event.stopPropagation(); selectPlan('starter', '₹99')">Select Starter</button>
-            <button class="pay-now-btn" onclick="event.stopPropagation(); selectAndPay('starter', '₹99')">
-              💳 Pay ₹99 &amp; Get Started
-            </button>
+            <button class="plan-select-btn" onclick="event.stopPropagation(); selectPlan('starter','₹99')">Select Starter</button>
+            <button class="pay-now-btn" onclick="event.stopPropagation(); selectAndPay('starter','₹99')">💳 Pay ₹99 &amp; Get Started</button>
           </div>
         </div>
 
-        <!-- Pro (Popular) -->
-        <div class="price-card popular fade-in" id="plan-pro" onclick="selectPlan('pro', '₹999')">
+        <!-- Pro -->
+        <div class="price-card popular fade-in" id="plan-pro" onclick="selectPlan('pro','₹999')">
           <div class="popular-badge">⭐ Most Popular</div>
           <div class="price-header">
             <h3>Pro</h3>
+            <p class="price-tagline">For candidates who want expert eyes on their profile</p>
             <div class="price-amount">₹999 <span>one-time</span></div>
           </div>
           <ul class="price-features">
             <li>Everything in Starter</li>
-            <li>Expert Resume Review Call</li>
-            <li>Personalized Feedback Session</li>
-            <li>Strong Bullet Point Rewrites</li>
-            <li>2 Revision Rounds</li>
+            <li><strong>1 Live 1-on-1 Session</strong> with an IMT/IIM expert</li>
+            <li>Personalized resume &amp; career feedback</li>
+            <li>Industry-specific positioning advice</li>
+            <li>What your target companies actually look for</li>
+            <li>Session scheduled within 48 hours</li>
           </ul>
           <div class="price-card-actions">
-            <button class="plan-select-btn" onclick="event.stopPropagation(); selectPlan('pro', '₹999')">Select Pro</button>
-            <button class="pay-now-btn" onclick="event.stopPropagation(); selectAndPay('pro', '₹999')">
-              💳 Pay ₹999 &amp; Get Started
-            </button>
+            <button class="plan-select-btn" onclick="event.stopPropagation(); selectPlan('pro','₹999')">Select Pro</button>
+            <button class="pay-now-btn" onclick="event.stopPropagation(); selectAndPay('pro','₹999')">💳 Pay ₹999 &amp; Get Started</button>
           </div>
         </div>
 
         <!-- Premium -->
-        <div class="price-card fade-in" id="plan-premium" onclick="selectPlan('premium', '₹1,499')">
+        <div class="price-card fade-in" id="plan-premium" onclick="selectPlan('premium','₹1,499')">
           <div class="price-header">
             <h3>Premium</h3>
+            <p class="price-tagline">For candidates who want the full edge</p>
             <div class="price-amount">₹1,499 <span>one-time</span></div>
           </div>
           <ul class="price-features">
             <li>Everything in Pro</li>
-            <li>AI + Expert Review Combo</li>
-            <li>LinkedIn Headline &amp; Summary</li>
-            <li>Cold DM Templates</li>
-            <li>Outreach Strategy Guide</li>
-            <li>Priority 24hr Turnaround</li>
+            <li><strong>3 Live 1-on-1 Sessions</strong> with your IMT/IIM mentor</li>
+            <li>LinkedIn Headline &amp; Summary Rewrite</li>
+            <li>Cold DM &amp; Email Outreach Templates</li>
+            <li>Full Job Search Roadmap</li>
+            <li>Priority 24hr Resume Turnaround</li>
           </ul>
           <div class="price-card-actions">
-            <button class="plan-select-btn" onclick="event.stopPropagation(); selectPlan('premium', '₹1,499')">Select Premium</button>
-            <button class="pay-now-btn" onclick="event.stopPropagation(); selectAndPay('premium', '₹1,499')">
-              💳 Pay ₹1,499 &amp; Get Started
-            </button>
+            <button class="plan-select-btn" onclick="event.stopPropagation(); selectPlan('premium','₹1,499')">Select Premium</button>
+            <button class="pay-now-btn" onclick="event.stopPropagation(); selectAndPay('premium','₹1,499')">💳 Pay ₹1,499 &amp; Get Started</button>
           </div>
         </div>
 
       </div>
-
       <div style="text-align:center; margin-top:44px;" class="fade-in">
-        <button class="btn btn-primary btn-lg" onclick="openPaymentModal()">
-          Complete Payment &amp; Get Started →
-        </button>
-        <p style="margin-top:12px; font-size:.82rem; color:var(--muted);">
-          No subscription. Pay once, get results within 24 hours.
-        </p>
+        <button class="btn btn-primary btn-lg" onclick="openPaymentModal()">Choose a Plan &amp; Get Started →</button>
+        <p style="margin-top:12px; font-size:.82rem; color:var(--muted);">No subscription · Pay once · Results in 24 hours</p>
       </div>
     </div>
   </section>
 
-  <!-- ── TESTIMONIALS ─────────────────────────────────────────── -->
-  <section id="testimonials" class="section-alt">
+  <!-- ══ EXPERTS ════════════════════════════════════════════════ -->
+  <section id="experts" class="section-alt">
+    <div class="container">
+      <p class="section-label fade-in">Your Mentors</p>
+      <h2 class="section-title fade-in">Meet the Experts Behind IMTIIM</h2>
+      <p class="section-sub fade-in">Every Pro and Premium session is conducted by professionals who've been hired by India's top companies and know exactly what gets candidates shortlisted.</p>
+      <div class="experts-grid">
+
+        <div class="expert-card fade-in">
+          <div class="expert-top">
+            <div class="expert-avatar">MS</div>
+            <div class="expert-info">
+              <h3>Mudit Sahai</h3>
+              <p class="role">Brand &amp; Sales Manager — Hindustan Unilever (HUL)</p>
+              <span class="expert-badge">IMT Ghaziabad · Marketing &amp; Strategy</span>
+            </div>
+          </div>
+          <p class="expert-quote">"Most candidates I see in interviews have decent skills but a terrible resume — it simply doesn't reflect what they're capable of. At IMTIIM, we close that gap. I've sat across the table from hundreds of applicants at HUL and I know exactly what a shortlist-worthy profile looks like. I'll help you build one."</p>
+        </div>
+
+        <div class="expert-card fade-in">
+          <div class="expert-top">
+            <div class="expert-avatar">SR</div>
+            <div class="expert-info">
+              <h3>Srujani</h3>
+              <p class="role">Retail Operations Lead — Tata Westside</p>
+              <span class="expert-badge">IIM Indore · Retail &amp; Operations Management</span>
+            </div>
+          </div>
+          <p class="expert-quote">"Getting hired in retail and operations is about storytelling — numbers, leadership, and impact. I've reviewed hundreds of CVs and most people undersell themselves badly. In our sessions, I help you articulate your value the way top companies want to see it. The difference between a rejection and a call-back is often just one line on your resume."</p>
+        </div>
+
+        <div class="expert-card fade-in">
+          <div class="expert-top">
+            <div class="expert-avatar">UD</div>
+            <div class="expert-info">
+              <h3>Udit</h3>
+              <p class="role">Marketing &amp; Brand Manager — VIP Industries</p>
+              <span class="expert-badge">IMT Nagpur · Marketing &amp; Brand Management</span>
+            </div>
+          </div>
+          <p class="expert-quote">"I spent months on the other side — sending out applications with zero callbacks. When I finally cracked it, I realised the issue was never my experience. It was how I was presenting it. Now I help others skip that painful phase entirely. If you're qualified but not getting calls, let's fix that together — it's almost always solvable in one session."</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS ═══════════════════════════════════════════ -->
+  <section id="testimonials">
     <div class="container">
       <p class="section-label fade-in">Reviews</p>
       <h2 class="section-title fade-in">Real People. Real Results.</h2>
-      <p class="section-sub fade-in">Join thousands who went from zero callbacks to multiple offers.</p>
+      <p class="section-sub fade-in">Join thousands who went from zero callbacks to multiple interview offers.</p>
       <div class="testimonials-grid">
         <div class="testi-card fade-in">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">"I was getting shortlisted with my CV, but I kept struggling in interviews due to poor spoken English and lack of fluency. The one-on-one sessions made a huge difference—they helped me build confidence and improve my communication. Eventually, I cracked my interviews and got placed at liebherr appliances."</p>
+          <p class="testi-quote">"I had been applying for 3 months with zero responses. After IMTIIM, I got 4 interview calls in one week. The ATS optimization alone was a game-changer — I didn't know my resume was failing at the first filter."</p>
           <div class="testi-author">
             <div class="testi-avatar">SJ</div>
             <div>
-              <div class="testi-name">Bhupesh</div>
-              <div class="testi-role">MBA Grad → MT at liebherr appliances</div>
+              <div class="testi-name">Sneha Joshi</div>
+              <div class="testi-role">MBA Grad → Analyst at Deloitte</div>
             </div>
           </div>
         </div>
         <div class="testi-card fade-in">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">"The expert review call changed everything. Arjun pointed out things I never would have noticed. My resume went from generic to genuinely impressive."</p>
+          <p class="testi-quote">"The Pro session was worth every rupee. My mentor spotted exactly why I was getting rejected — I was positioning myself wrong for the roles I wanted. One session changed my entire approach and within 2 weeks I had 3 final-round interviews."</p>
           <div class="testi-author">
             <div class="testi-avatar">RK</div>
             <div>
@@ -1047,9 +877,7 @@
         </div>
         <div class="testi-card fade-in">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote">"I struggled during my SIP and was facing the same issues again in finals, despite having a solid resume.
-Tried IMTIIM – Interview Prep, and it completely changed how I presented myself. Didn’t need a new resume — just a better way to communicate it.
-Simple, practical, and genuinely effective."</p>
+          <p class="testi-quote">"I took the Premium plan and it was the best career investment I've made. 3 sessions, a rewritten LinkedIn, and outreach templates. Within 10 days I had inbound recruiter messages for the first time ever. This is not just a resume service — it's a career accelerator."</p>
           <div class="testi-author">
             <div class="testi-avatar">AM</div>
             <div>
@@ -1062,72 +890,104 @@ Simple, practical, and genuinely effective."</p>
     </div>
   </section>
 
-  <!-- ── WHO IT'S FOR ─────────────────────────────────────────── -->
-  <section id="who">
+  <!-- ══ WHO IT'S FOR ════════════════════════════════════════════ -->
+  <section id="who" class="section-alt">
     <div class="container">
       <p class="section-label fade-in">Audience</p>
-      <h2 class="section-title fade-in">Who It's For</h2>
-      <p class="section-sub fade-in">Built for serious candidates who want to stand out.</p>
+      <h2 class="section-title fade-in">This Is Built for You If…</h2>
+      <p class="section-sub fade-in">You're talented, qualified, and hardworking — but something isn't converting. We fix that.</p>
       <div class="who-grid">
         <div class="who-item fade-in">
           <div class="who-icon">🎓</div>
-          Students applying for internships
+          <div class="who-text">
+            <h4>Students applying for internships</h4>
+            <p>First impressions matter. We make sure your profile competes with the best — even without years of experience.</p>
+          </div>
         </div>
         <div class="who-item fade-in">
           <div class="who-icon">🔄</div>
-          Job switchers stuck at 0 responses
+          <div class="who-text">
+            <h4>Job switchers stuck at 0 responses</h4>
+            <p>You've applied to dozens of roles and heard nothing. Your resume is the problem — not your skills. We fix it.</p>
+          </div>
         </div>
         <div class="who-item fade-in">
           <div class="who-icon">📊</div>
-          MBA grads entering the workforce
+          <div class="who-text">
+            <h4>MBA grads entering the workforce</h4>
+            <p>An MBA is worth more when your profile reflects it correctly. We translate your degree into an employer-ready story.</p>
+          </div>
         </div>
         <div class="who-item fade-in">
           <div class="who-icon">💰</div>
-          Finance &amp; consulting aspirants
+          <div class="who-text">
+            <h4>Finance &amp; consulting aspirants</h4>
+            <p>These roles demand precision. Our mentors come from IIM and top consulting backgrounds — they know what gets you in.</p>
+          </div>
+        </div>
+        <div class="who-item fade-in">
+          <div class="who-icon">🎤</div>
+          <div class="who-text">
+            <h4>Clearing interviews but not converting offers</h4>
+            <p>You're getting to the room but not walking out with the offer. Our 1-on-1 sessions prep you on positioning, answers, and presence.</p>
+          </div>
         </div>
         <div class="who-item fade-in">
           <div class="who-icon">🌐</div>
-          Remote job hunters targeting global roles
+          <div class="who-text">
+            <h4>Remote &amp; global job hunters</h4>
+            <p>International and remote applications require a different standard. We adapt your resume to pass global ATS systems.</p>
+          </div>
         </div>
         <div class="who-item fade-in">
           <div class="who-icon">⚡</div>
-          Anyone not getting enough callbacks
+          <div class="who-text">
+            <h4>Anyone not getting enough callbacks</h4>
+            <p>Sending applications into silence is demoralising. If the shortlists aren't coming, your resume needs urgent work.</p>
+          </div>
+        </div>
+        <div class="who-item fade-in">
+          <div class="who-icon">🏢</div>
+          <div class="who-text">
+            <h4>Corporate professionals aiming for a promotion</h4>
+            <p>Moving up or moving on — your resume needs to reflect leadership, impact, and readiness for the next level.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── FINAL CTA ────────────────────────────────────────────── -->
+  <!-- ══ FINAL CTA ══════════════════════════════════════════════ -->
   <section class="cta-section">
     <div class="container">
-      <h2 class="fade-in">Stop Getting Rejected.<br/>Start Getting Interviews.</h2>
-      <p class="fade-in">Your next opportunity is one optimized resume away.</p>
-      <button class="btn btn-white btn-lg fade-in" onclick="openPaymentModal()">
-        Get Started Now →
-      </button>
+      <h2 class="fade-in">Your Next Job Is Closer Than You Think.<br/>Let's Get You There.</h2>
+      <p class="fade-in">AI-powered resume + real expert sessions from IMT &amp; IIM graduates. Starting at just ₹99.</p>
+      <button class="btn btn-white btn-lg fade-in" onclick="openPaymentModal()">Choose Your Plan &amp; Get Started →</button>
       <p class="cta-note fade-in">Results in 24 hours · No subscription · Pay securely via UPI</p>
     </div>
   </section>
 
-  <!-- ── FOOTER ───────────────────────────────────────────────── -->
+  <!-- ══ FOOTER ═════════════════════════════════════════════════ -->
   <footer>
     <div class="container footer-inner">
-      <div class="footer-logo">IMT<span>IMT</span></div>
-      <p>Built for job seekers.</p>
+      <div class="footer-logo">IMT<span>IIM</span></div>
+      <p>Built for job seekers. Backed by top-tier professionals.</p>
       <p>© 2026 IMTIIM. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- ── JAVASCRIPT ───────────────────────────────────────────── -->
+  <!-- ══ JAVASCRIPT ═════════════════════════════════════════════ -->
   <script>
     const GOOGLE_FORM_LINK =
       "https://docs.google.com/forms/d/e/1FAIpQLSf50XVvaQtv4ybl7a2lwWLykOw6VsZJGf0G_dQAGJ1xg3uJwg/viewform";
 
-    /* Plan price map */
     const PLAN_PRICES = { starter: '₹99', pro: '₹999', premium: '₹1,499' };
     const PLAN_LABELS = { starter: 'Starter Plan', pro: 'Pro Plan', premium: 'Premium Plan' };
 
-    /* ── Plan selection ── */
+    let modalSelectedPlan  = null;
+    let modalSelectedPrice = null;
+
+    /* ── Plan selection (pricing cards on page) ── */
     function selectPlan(plan, price) {
       localStorage.setItem("selectedPlan",  plan);
       localStorage.setItem("selectedPrice", price || PLAN_PRICES[plan]);
@@ -1146,22 +1006,70 @@ Simple, practical, and genuinely effective."</p>
       }
     }
 
-    /* ── Select plan then immediately open payment modal ── */
+    /* ── Select + open modal directly to QR ── */
     function selectAndPay(plan, price) {
       selectPlan(plan, price);
-      openPaymentModal();
-    }
-
-    /* ── Open payment modal ── */
-    function openPaymentModal() {
-      const plan  = localStorage.getItem("selectedPlan")  || "starter";
-      const price = localStorage.getItem("selectedPrice") || PLAN_PRICES[plan];
-
-      document.getElementById("modalPlanName").textContent  = PLAN_LABELS[plan]  || "Starter Plan";
-      document.getElementById("modalPlanPrice").textContent = price;
-
+      modalSelectedPlan  = plan;
+      modalSelectedPrice = price;
+      showQRScreen();
       document.getElementById("paymentModal").classList.add("open");
       document.body.style.overflow = "hidden";
+    }
+
+    /* ── Open modal starting at plan picker ── */
+    function openPaymentModal() {
+      // Reflect any already-selected plan in picker
+      const saved = localStorage.getItem("selectedPlan");
+      if (saved) highlightModalOption(saved);
+
+      showPlanPicker();
+      document.getElementById("paymentModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    /* ── Highlight an option in the modal picker ── */
+    function highlightModalOption(plan) {
+      document.querySelectorAll(".modal-plan-option").forEach(o => o.classList.remove("active"));
+      const opt = document.getElementById("mpo-" + plan);
+      if (opt) opt.classList.add("active");
+      modalSelectedPlan  = plan;
+      modalSelectedPrice = PLAN_PRICES[plan];
+    }
+
+    /* ── User picks a plan inside the modal ── */
+    function pickModalPlan(plan, price, label) {
+      document.querySelectorAll(".modal-plan-option").forEach(o => o.classList.remove("active"));
+      document.getElementById("mpo-" + plan).classList.add("active");
+      modalSelectedPlan  = plan;
+      modalSelectedPrice = price;
+      // Also sync pricing cards
+      selectPlan(plan, price);
+    }
+
+    /* ── Advance to QR screen ── */
+    function goToPayScreen() {
+      if (!modalSelectedPlan) {
+        // Default to pro if nothing selected
+        pickModalPlan("pro", "₹999", "Pro Plan");
+      }
+      showQRScreen();
+    }
+
+    function showQRScreen() {
+      document.getElementById("modalPlanName").textContent  = PLAN_LABELS[modalSelectedPlan]  || "Pro Plan";
+      document.getElementById("modalPlanPrice").textContent = modalSelectedPrice || "₹999";
+      document.getElementById("screenPicker").classList.remove("active");
+      document.getElementById("screenPay").classList.add("active");
+    }
+
+    function goToPlanPicker() {
+      document.getElementById("screenPay").classList.remove("active");
+      document.getElementById("screenPicker").classList.add("active");
+    }
+
+    function showPlanPicker() {
+      document.getElementById("screenPay").classList.remove("active");
+      document.getElementById("screenPicker").classList.add("active");
     }
 
     /* ── Close modal ── */
@@ -1169,29 +1077,26 @@ Simple, practical, and genuinely effective."</p>
       document.getElementById("paymentModal").classList.remove("open");
       document.body.style.overflow = "";
     }
-
     function closeModalOutside(e) {
       if (e.target === document.getElementById("paymentModal")) closeModal();
     }
-
-    /* Close on Escape */
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
-    /* ── After payment redirect to Google Form ── */
+    /* ── After payment → Google Form ── */
     function proceedAfterPayment() {
-      const plan = localStorage.getItem("selectedPlan") || "starter";
+      const plan = modalSelectedPlan || localStorage.getItem("selectedPlan") || "starter";
       const url  = GOOGLE_FORM_LINK + "?usp=dialog&plan=" + encodeURIComponent(plan);
       closeModal();
       window.open(url, "_blank");
     }
 
-    /* ── Restore saved selection on load ── */
+    /* ── Restore saved plan card highlight on load (no modal auto-open) ── */
     (function restoreSelection() {
       const saved = localStorage.getItem("selectedPlan");
       if (saved) selectPlan(saved);
     })();
 
-    /* ── Scroll-triggered fade-in ── */
+    /* ── Scroll fade-in ── */
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1199,7 +1104,7 @@ Simple, practical, and genuinely effective."</p>
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
 
     document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
   </script>
