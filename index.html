@@ -410,10 +410,85 @@
     .cta-note { margin-top: 18px; color: rgba(255,255,255,.55); font-size: .82rem; }
 
     /* ── FOOTER ── */
-    footer { background: #0f0f0f; color: rgba(255,255,255,.45); padding: 40px 0; text-align: center; font-size: .85rem; }
-    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-    .footer-logo { font-size: 1.1rem; font-weight: 800; color: #fff; letter-spacing: -.5px; }
+    footer { background: #0f0f0f; color: rgba(255,255,255,.45); padding: 48px 0 32px; font-size: .85rem; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: start;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 24px;
+    }
+    .footer-brand p { margin-top: 8px; color: rgba(255,255,255,.4); font-size: .83rem; max-width: 260px; line-height: 1.55; }
+    .footer-logo { font-size: 1.2rem; font-weight: 800; color: #fff; letter-spacing: -.5px; }
     .footer-logo span { color: #818cf8; }
+    .footer-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .footer-link-btn {
+      background: rgba(255,255,255,.07);
+      color: rgba(255,255,255,.7);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: .82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-link-btn:hover { background: rgba(255,255,255,.14); color: #fff; }
+    .footer-link-btn.wa { background: rgba(37,211,102,.12); border-color: rgba(37,211,102,.25); color: #25d366; }
+    .footer-link-btn.wa:hover { background: rgba(37,211,102,.2); color: #25d366; }
+    .footer-bottom { text-align: center; color: rgba(255,255,255,.3); font-size: .78rem; }
+    @media (max-width: 640px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-links { justify-content: flex-start; }
+    }
+
+    /* ── POLICY MODAL ── */
+    .policy-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.6); backdrop-filter: blur(6px);
+      z-index: 1000; align-items: flex-end; justify-content: center;
+    }
+    .policy-overlay.open { display: flex; }
+    .policy-sheet {
+      background: #fff; border-radius: 20px 20px 0 0;
+      width: 100%; max-width: 680px; max-height: 82vh;
+      overflow-y: auto; padding: 32px 36px 40px;
+      animation: sheetUp .3s ease both;
+      color: #0f0f0f;
+    }
+    @keyframes sheetUp {
+      from { transform: translateY(60px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .policy-sheet-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .policy-sheet-header h2 { font-size: 1.3rem; font-weight: 800; }
+    .policy-close {
+      width: 36px; height: 36px; border-radius: 50%; border: none;
+      background: #f3f4f6; cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center; transition: background .2s;
+    }
+    .policy-close:hover { background: #e5e7eb; }
+    .policy-body h3 { font-size: 1rem; font-weight: 700; margin: 20px 0 8px; }
+    .policy-body h3:first-child { margin-top: 0; }
+    .policy-body p { font-size: .9rem; color: #374151; line-height: 1.7; margin-bottom: 10px; }
+    .policy-body ul { padding-left: 20px; margin-bottom: 10px; }
+    .policy-body ul li { font-size: .9rem; color: #374151; line-height: 1.7; margin-bottom: 4px; }
+    .policy-body .highlight-box {
+      background: #f0fdf4; border-left: 4px solid #16a34a;
+      border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 16px 0;
+      font-size: .9rem; color: #15803d; font-weight: 500;
+    }
+    @media (max-width: 640px) { .policy-sheet { padding: 24px 20px 32px; border-radius: 16px 16px 0 0; } }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
@@ -565,7 +640,7 @@
         <span>Start Getting Hired.</span>
       </h1>
       <p class="fade-in">
-        We don't just fix your resume with AI — we pair you with real graduates from IMT &amp; IIM for 1-on-1 career sessions that turn applications into offers.
+        We don't just fix your resume with AI — we pair you with top MBA graduates &amp; industry professionals for 1-on-1 career sessions that turn applications into offers.
       </p>
       <div class="hero-actions fade-in">
         <button class="btn btn-primary btn-lg" onclick="openPaymentModal()">🚀 Get Started — Choose a Plan</button>
@@ -574,7 +649,7 @@
       <div class="hero-trust fade-in">
         <span>⚡ Resume delivered in 24 hrs</span>
         <span class="dot"></span>
-        <span>🎓 Real IMT &amp; IIM mentors</span>
+        <span>🎓 Top MBA &amp; Industry Mentors</span>
         <span class="dot"></span>
         <span>✅ ATS-Optimized</span>
         <span class="dot"></span>
@@ -622,7 +697,7 @@
           <h3>AI Fix + 1 Expert Session</h3>
           <div class="track-steps">
             <div class="track-step"><div class="track-step-dot"></div><span>Everything in Starter — full AI resume optimization</span></div>
-            <div class="track-step"><div class="track-step-dot"></div><span><strong>1 live 1-on-1 video session</strong> with an IMT or IIM graduate who works in your target industry</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span><strong>1 live 1-on-1 video session</strong> with a top MBA graduate &amp; industry professional in your target field</span></div>
             <div class="track-step"><div class="track-step-dot"></div><span>Personalized feedback on resume, positioning &amp; job strategy</span></div>
             <div class="track-step"><div class="track-step-dot"></div><span>Insider tips on what hiring managers in your field actually look for</span></div>
             <div class="track-step"><div class="track-step-dot"></div><span><strong>Session scheduled within 48 hours of payment</strong></span></div>
@@ -633,7 +708,7 @@
           <h3>AI + 3 Sessions + Full Strategy</h3>
           <div class="track-steps">
             <div class="track-step"><div class="track-step-dot"></div><span>Everything in Pro — AI resume + 1st expert session</span></div>
-            <div class="track-step"><div class="track-step-dot"></div><span><strong>3 total 1-on-1 sessions</strong> with your assigned IMT/IIM mentor over the course of your job search</span></div>
+            <div class="track-step"><div class="track-step-dot"></div><span><strong>3 total 1-on-1 sessions</strong> with your assigned mentor — a top MBA graduate or industry professional — over the course of your job search</span></div>
             <div class="track-step"><div class="track-step-dot"></div><span>LinkedIn headline, summary &amp; profile rewrite included</span></div>
             <div class="track-step"><div class="track-step-dot"></div><span>Cold DM &amp; email outreach templates to reach hiring managers directly</span></div>
             <div class="track-step"><div class="track-step-dot"></div><span><strong>Full job-search roadmap</strong> — who to reach, when &amp; how</span></div>
@@ -738,7 +813,7 @@
             <li>Full AI Resume Optimization</li>
             <li>ATS Keyword Restructuring</li>
             <li>Impact Bullet Point Rewrites</li>
-            <li>Grammar, Formatting &amp; Layout Fix</li>
+            <li>Tips &amp; suggestions to improve Grammar, Spacing &amp; Layout</li>
             <li>Polished CV delivered to email in 24 hrs</li>
           </ul>
           <div class="price-card-actions">
@@ -757,7 +832,7 @@
           </div>
           <ul class="price-features">
             <li>Everything in Starter</li>
-            <li><strong>1 Live 1-on-1 Session</strong> with an IMT/IIM expert</li>
+            <li><strong>1 Live 1-on-1 Session</strong> with a top MBA graduate &amp; industry professional</li>
             <li>Personalized resume &amp; career feedback</li>
             <li>Industry-specific positioning advice</li>
             <li>What your target companies actually look for</li>
@@ -778,7 +853,7 @@
           </div>
           <ul class="price-features">
             <li>Everything in Pro</li>
-            <li><strong>3 Live 1-on-1 Sessions</strong> with your IMT/IIM mentor</li>
+            <li><strong>3 Live 1-on-1 Sessions</strong> with your dedicated mentor</li>
             <li>LinkedIn Headline &amp; Summary Rewrite</li>
             <li>Cold DM &amp; Email Outreach Templates</li>
             <li>Full Job Search Roadmap</li>
@@ -811,7 +886,8 @@
             <div class="expert-avatar">MS</div>
             <div class="expert-info">
               <h3>Mudit Sahai</h3>
-              <p class="role">Brand &amp; Sales Manager — Hindustan Unilever (HUL)</p>
+              <p class="role">Brand Manager — Hindustan Unilever (HUL)</p>
+              <p class="role" style="margin-top:2px;">Ex Adani Wilmar</p>
               <span class="expert-badge">IMT Ghaziabad · Marketing &amp; Strategy</span>
             </div>
           </div>
@@ -824,7 +900,8 @@
             <div class="expert-info">
               <h3>Srujani</h3>
               <p class="role">Retail Operations Lead — Tata Westside</p>
-              <span class="expert-badge">IIM Indore · Retail &amp; Operations Management</span>
+              <p class="role" style="margin-top:2px;">Ex Nykaa &amp; Landmark Group Dubai</p>
+              <span class="expert-badge">MBA · Retail &amp; Operations Management</span>
             </div>
           </div>
           <p class="expert-quote">"Getting hired in retail and operations is about storytelling — numbers, leadership, and impact. I've reviewed hundreds of CVs and most people undersell themselves badly. In our sessions, I help you articulate your value the way top companies want to see it. The difference between a rejection and a call-back is often just one line on your resume."</p>
@@ -922,7 +999,7 @@
           <div class="who-icon">💰</div>
           <div class="who-text">
             <h4>Finance &amp; consulting aspirants</h4>
-            <p>These roles demand precision. Our mentors come from IIM and top consulting backgrounds — they know what gets you in.</p>
+            <p>These roles demand precision. Our mentors are top MBA graduates with real experience in consulting and finance — they know exactly what gets you in.</p>
           </div>
         </div>
         <div class="who-item fade-in">
@@ -961,18 +1038,133 @@
   <section class="cta-section">
     <div class="container">
       <h2 class="fade-in">Your Next Job Is Closer Than You Think.<br/>Let's Get You There.</h2>
-      <p class="fade-in">AI-powered resume + real expert sessions from IMT &amp; IIM graduates. Starting at just ₹99.</p>
+      <p class="fade-in">AI-powered resume + real 1-on-1 sessions with top MBA graduates &amp; industry professionals. Starting at just ₹99.</p>
       <button class="btn btn-white btn-lg fade-in" onclick="openPaymentModal()">Choose Your Plan &amp; Get Started →</button>
       <p class="cta-note fade-in">Results in 24 hours · No subscription · Pay securely via UPI</p>
     </div>
   </section>
 
+  <!-- ══ PRIVACY POLICY MODAL ══════════════════════════════════ -->
+  <div class="policy-overlay" id="privacyModal" onclick="closePolicyModal('privacyModal')">
+    <div class="policy-sheet" onclick="event.stopPropagation()">
+      <div class="policy-sheet-header">
+        <h2>🔒 Privacy Policy</h2>
+        <button class="policy-close" onclick="closePolicyModal('privacyModal')">✕</button>
+      </div>
+      <div class="policy-body">
+        <h3>What We Collect</h3>
+        <p>When you use IMTIIM's services, we collect information you provide directly — including your name, email address, phone number, resume, and any other details shared through our intake form. We also collect payment confirmation screenshots solely to verify your transaction.</p>
+
+        <h3>How We Use Your Information</h3>
+        <ul>
+          <li>To deliver your optimised resume and schedule expert sessions</li>
+          <li>To communicate with you about your order and any follow-ups</li>
+          <li>To improve our service quality and mentor matching</li>
+          <li>We do <strong>not</strong> sell, rent, or share your personal data with third parties for marketing purposes</li>
+        </ul>
+
+        <h3>Your Resume &amp; Session Confidentiality</h3>
+        <div class="highlight-box">Your resume and the contents of your 1-on-1 sessions are 100% confidential. Our mentors operate under strict confidentiality. Nothing you share is disclosed to anyone outside our team.</div>
+
+        <h3>Data Retention</h3>
+        <p>We retain your information only as long as necessary to deliver the service. If you'd like your data deleted, simply email us and we'll remove it within 7 working days.</p>
+
+        <h3>Cookies</h3>
+        <p>This website uses minimal browser storage (localStorage) only to remember your plan selection within your current browsing session. No tracking cookies or third-party analytics are used.</p>
+
+        <h3>Contact</h3>
+        <p>For any privacy-related queries, reach us on WhatsApp at <strong>+91 95888 59960</strong> or via our contact button below.</p>
+        <p style="font-size:.78rem; color:#9ca3af; margin-top:16px;">Last updated: May 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ REFUND POLICY MODAL ════════════════════════════════════ -->
+  <div class="policy-overlay" id="refundModal" onclick="closePolicyModal('refundModal')">
+    <div class="policy-sheet" onclick="event.stopPropagation()">
+      <div class="policy-sheet-header">
+        <h2>💸 Refund Policy</h2>
+        <button class="policy-close" onclick="closePolicyModal('refundModal')">✕</button>
+      </div>
+      <div class="policy-body">
+        <div class="highlight-box">We stand by the quality of our work. Your success matters more than a one-time payment.</div>
+
+        <h3>Our Guarantee</h3>
+        <p>If you're not satisfied with your resume after delivery, you can request a <strong>full refund within 48 hours</strong> — no questions asked.</p>
+
+        <h3>How It Works</h3>
+        <ul>
+          <li>Email us within 48 hours of receiving your resume</li>
+          <li>Tell us what didn't meet your expectations</li>
+          <li>We'll process your refund within <strong>3–5 working days</strong></li>
+        </ul>
+
+        <h3>Expert Session Refunds</h3>
+        <p>For Pro and Premium plans, if your session has not yet been scheduled or conducted, you are eligible for a full refund within 48 hours of payment. Once a session has been completed, refunds apply only to the remaining unused sessions.</p>
+
+        <h3>One Small Ask</h3>
+        <p>We only ask one thing — give us a fair chance to deliver the service as promised. If something didn't meet expectations, let us know first and we'll do our best to make it right before processing a refund.</p>
+
+        <h3>How to Reach Us</h3>
+        <p>WhatsApp us at <strong>+91 95888 59960</strong> or use the Contact Us button in the footer. We typically respond within a few hours.</p>
+        <p style="font-size:.78rem; color:#9ca3af; margin-top:16px;">Last updated: May 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FAQ MODAL ══════════════════════════════════════════════ -->
+  <div class="policy-overlay" id="faqModal" onclick="closePolicyModal('faqModal')">
+    <div class="policy-sheet" onclick="event.stopPropagation()">
+      <div class="policy-sheet-header">
+        <h2>❓ Frequently Asked Questions</h2>
+        <button class="policy-close" onclick="closePolicyModal('faqModal')">✕</button>
+      </div>
+      <div class="policy-body">
+        <h3>How quickly will I receive my resume?</h3>
+        <p>Your AI-optimised resume is delivered to your email within <strong>24 hours</strong> of submitting the form and payment proof. For Pro and Premium, your expert session is scheduled within 48 hours.</p>
+
+        <h3>Who are the mentors?</h3>
+        <p>Our mentors are top MBA graduates and working professionals at leading companies like Hindustan Unilever, Tata, and VIP Industries. They have direct experience in hiring and know what gets resumes shortlisted.</p>
+
+        <h3>How do the 1-on-1 sessions work?</h3>
+        <p>Sessions are conducted over video call (Google Meet or Zoom). Once payment is confirmed, we WhatsApp you within 24 hours to schedule a convenient time. Each session is 45–60 minutes.</p>
+
+        <h3>What format will my resume be in?</h3>
+        <p>You'll receive a clean, ATS-friendly resume in PDF and Word (.docx) formats — ready to send as-is.</p>
+
+        <h3>Can I upgrade my plan after paying?</h3>
+        <p>Yes! If you started with Starter and want to upgrade to Pro or Premium, just WhatsApp us. You'll only pay the difference.</p>
+
+        <h3>Is my resume and personal info safe?</h3>
+        <p>Absolutely. All your information is kept strictly confidential. We never share your data with third parties. See our Privacy Policy for full details.</p>
+
+        <h3>What if I'm not happy with the result?</h3>
+        <p>We offer a full refund within 48 hours of delivery — no questions asked. See our Refund Policy for details.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- ══ FOOTER ═════════════════════════════════════════════════ -->
   <footer>
-    <div class="container footer-inner">
-      <div class="footer-logo">IMT<span>IIM</span></div>
-      <p>Built for job seekers. Backed by top-tier professionals.</p>
-      <p>© 2026 IMTIIM. All rights reserved.</p>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">IMT<span>IIM</span></div>
+          <p>Built for job seekers. Backed by top MBA graduates &amp; industry professionals.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://wa.me/919588859960" target="_blank" class="footer-link-btn wa">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Contact Us
+          </a>
+          <button class="footer-link-btn" onclick="openPolicyModal('faqModal')">❓ FAQ</button>
+          <button class="footer-link-btn" onclick="openPolicyModal('refundModal')">💸 Refund Policy</button>
+          <button class="footer-link-btn" onclick="openPolicyModal('privacyModal')">🔒 Privacy Policy</button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 IMTIIM. All rights reserved. · Built for job seekers across India.</p>
+      </div>
     </div>
   </footer>
 
@@ -1095,6 +1287,21 @@
       const saved = localStorage.getItem("selectedPlan");
       if (saved) selectPlan(saved);
     })();
+
+    /* ── Policy modals ── */
+    function openPolicyModal(id) {
+      document.getElementById(id).classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closePolicyModal(id) {
+      document.getElementById(id).classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        ["privacyModal","refundModal","faqModal"].forEach(id => closePolicyModal(id));
+      }
+    });
 
     /* ── Scroll fade-in ── */
     const observer = new IntersectionObserver((entries) => {
