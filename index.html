@@ -354,12 +354,24 @@
       text-align: center; gap: 14px;
     }
     .expert-avatar {
-      width: 76px; height: 76px; border-radius: 50%; flex-shrink: 0;
+      width: 96px; height: 96px; border-radius: 50%; flex-shrink: 0;
       border: 3px solid var(--accent-light);
       background: linear-gradient(135deg, #c7d2fe 0%, #818cf8 100%);
       display: flex; align-items: center; justify-content: center;
       font-size: 1.5rem; font-weight: 800; color: var(--accent);
+      overflow: hidden;
     }
+    .expert-avatar img {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+    }
+    .expert-linkedin {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 6px; font-size: .75rem; font-weight: 600;
+      color: #0077b5; text-decoration: none;
+      background: #e8f4fd; padding: 4px 10px; border-radius: 100px;
+      transition: background .2s, color .2s;
+    }
+    .expert-linkedin:hover { background: #0077b5; color: #fff; }
     .expert-info { display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .expert-info h3 { font-size: 1.05rem; font-weight: 800; margin: 0; }
     .expert-info .role-current {
@@ -391,10 +403,14 @@
     .testi-quote { font-size: .92rem; color: var(--muted); line-height: 1.65; font-style: italic; }
     .testi-author { display: flex; align-items: center; gap: 12px; }
     .testi-avatar {
-      width: 44px; height: 44px; border-radius: 50%;
+      width: 48px; height: 48px; border-radius: 50%;
       background: linear-gradient(135deg, #c7d2fe 0%, #818cf8 100%);
       display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: .95rem; color: var(--accent); flex-shrink: 0;
+      font-weight: 700; font-size: .95rem; color: var(--accent);
+      flex-shrink: 0; overflow: hidden; border: 2px solid var(--accent-light);
+    }
+    .testi-avatar img {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
     }
     .testi-name { font-weight: 700; font-size: .9rem; }
     .testi-role { font-size: .8rem; color: var(--muted); }
@@ -611,7 +627,7 @@
         <div class="modal-qr-section">
           <p>👇 Scan with any UPI app</p>
           <img
-            src="Payment.jpeg"
+            src="payment.jpeg"
             alt="Payment QR Code"
             style="width:100%; max-width:300px; border-radius:14px; margin:0 auto; display:block; border:1px solid var(--border);"
           />
@@ -898,12 +914,18 @@
         <!-- Mudit -->
         <div class="expert-card fade-in">
           <div class="expert-top">
-            <div class="expert-avatar">MS</div>
+            <div class="expert-avatar">
+              <img src="mudit.jpeg" alt="Mudit Sahai" />
+            </div>
             <div class="expert-info">
               <h3>Mudit Sahai</h3>
               <p class="role-current">Brand Manager — Hindustan Unilever (HUL)</p>
               <p class="role-former">Previously at Adani Wilmar</p>
               <span class="expert-badge">IMT Ghaziabad · Marketing &amp; Strategy</span>
+              <a class="expert-linkedin" href="https://www.linkedin.com/in/mudit-sahai/" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
             </div>
           </div>
           <p class="expert-quote">"Most candidates I see in interviews have decent skills but a terrible resume — it simply doesn't reflect what they're capable of. At IMTIIM, we close that gap. I've sat across the table from hundreds of applicants at HUL and I know exactly what a shortlist-worthy profile looks like. I'll help you build one."</p>
@@ -912,12 +934,18 @@
         <!-- Srujani -->
         <div class="expert-card fade-in">
           <div class="expert-top">
-            <div class="expert-avatar">SR</div>
+            <div class="expert-avatar">
+              <img src="srujani.jpeg" alt="Srujani" />
+            </div>
             <div class="expert-info">
-              <h3>Srujani</h3>
-              <p class="role-current">Retail Operations Lead — Tata Westside</p>
+              <h3>Srujani Bhamre</h3>
+              <p class="role-current">Assistant Manager — Merchandising | Westside</p>
               <p class="role-former">Previously at Nykaa &amp; Landmark Group, Dubai</p>
-              <span class="expert-badge">MBA · Retail &amp; Operations Management</span>
+              <span class="expert-badge">MBA · Retail &amp; Merchandising</span>
+              <a class="expert-linkedin" href="https://www.linkedin.com/in/srujani-bhamre/" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
             </div>
           </div>
           <p class="expert-quote">"Getting hired in retail and operations is about storytelling — numbers, leadership, and impact. I've reviewed hundreds of CVs and most people undersell themselves badly. In our sessions, I help you articulate your value the way top companies want to see it. The difference between a rejection and a call-back is often just one line on your resume."</p>
@@ -926,11 +954,17 @@
         <!-- Udit -->
         <div class="expert-card fade-in">
           <div class="expert-top">
-            <div class="expert-avatar">UD</div>
+            <div class="expert-avatar">
+              <img src="udit.jpeg" alt="Udit" />
+            </div>
             <div class="expert-info">
-              <h3>Udit</h3>
+              <h3>Udit Sahai</h3>
               <p class="role-current">Marketing &amp; Brand Manager — VIP Industries</p>
               <span class="expert-badge">IMT Nagpur · Marketing &amp; Brand Management</span>
+              <a class="expert-linkedin" href="https://www.linkedin.com/in/udit-sahai24/" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
             </div>
           </div>
           <p class="expert-quote">"I spent months on the other side — sending out applications with zero callbacks. When I finally cracked it, I realised the issue was never my experience. It was how I was presenting it. Now I help others skip that painful phase entirely. If you're qualified but not getting calls, let's fix that together — it's almost always solvable in one session."</p>
@@ -951,7 +985,7 @@
           <div class="testi-stars">★★★★★</div>
           <p class="testi-quote">"I had been applying for 3 months with zero responses. After IMTIIM, I got 4 interview calls in one week. The ATS optimization alone was a game-changer — I didn't know my resume was failing at the first filter."</p>
           <div class="testi-author">
-            <div class="testi-avatar">SJ</div>
+            <div class="testi-avatar"><img src="sneha.jpeg" alt="Sneha Joshi" /></div>
             <div>
               <div class="testi-name">Sneha Joshi</div>
               <div class="testi-role">MBA Grad → Analyst at Deloitte</div>
@@ -962,7 +996,7 @@
           <div class="testi-stars">★★★★★</div>
           <p class="testi-quote">"The Pro session was worth every rupee. My mentor spotted exactly why I was getting rejected — I was positioning myself wrong for the roles I wanted. One session changed my entire approach and within 2 weeks I had 3 final-round interviews."</p>
           <div class="testi-author">
-            <div class="testi-avatar">RK</div>
+            <div class="testi-avatar"><img src="rahul.jpeg" alt="Rahul Khanna" /></div>
             <div>
               <div class="testi-name">Rahul Khanna</div>
               <div class="testi-role">Engineer → PM at a Series-B Startup</div>
@@ -973,7 +1007,7 @@
           <div class="testi-stars">★★★★★</div>
           <p class="testi-quote">"I took the Premium plan and it was the best career investment I've made. 3 sessions, a rewritten LinkedIn, and outreach templates. Within 10 days I had inbound recruiter messages for the first time ever. This is not just a resume service — it's a career accelerator."</p>
           <div class="testi-author">
-            <div class="testi-avatar">AM</div>
+            <div class="testi-avatar"><img src="anika.jpeg" alt="Anika Mehra" /></div>
             <div>
               <div class="testi-name">Anika Mehra</div>
               <div class="testi-role">Finance Student → Intern at Axis Capital</div>
