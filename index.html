@@ -344,25 +344,39 @@
     .expert-card {
       background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 32px 28px; box-shadow: var(--shadow); transition: box-shadow .25s, transform .25s;
+      display: flex; flex-direction: column; gap: 20px;
     }
     .expert-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-    .expert-top { display: flex; align-items: center; gap: 18px; margin-bottom: 16px; }
+
+    /* Avatar centred at top, info below */
+    .expert-top {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 14px;
+    }
     .expert-avatar {
-      width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+      width: 76px; height: 76px; border-radius: 50%; flex-shrink: 0;
       border: 3px solid var(--accent-light);
       background: linear-gradient(135deg, #c7d2fe 0%, #818cf8 100%);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; font-weight: 800; color: var(--accent);
+      font-size: 1.5rem; font-weight: 800; color: var(--accent);
     }
-    .expert-info h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 2px; }
-    .expert-info .role { font-size: .85rem; color: var(--muted); margin-bottom: 6px; }
+    .expert-info { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .expert-info h3 { font-size: 1.05rem; font-weight: 800; margin: 0; }
+    .expert-info .role-current {
+      font-size: .85rem; font-weight: 600; color: var(--text); line-height: 1.4;
+    }
+    .expert-info .role-former {
+      font-size: .78rem; color: var(--muted); line-height: 1.4;
+    }
     .expert-badge {
       display: inline-block; background: var(--accent-light); color: var(--accent);
-      font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 100px;
+      font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 100px;
+      margin-top: 2px;
     }
     .expert-quote {
-      font-size: .88rem; color: #374151; line-height: 1.65;
+      font-size: .88rem; color: #374151; line-height: 1.7;
       font-style: italic; border-left: 3px solid var(--accent-light); padding-left: 14px;
+      margin: 0;
     }
 
     /* ── TESTIMONIALS ── */
@@ -597,7 +611,7 @@
         <div class="modal-qr-section">
           <p>👇 Scan with any UPI app</p>
           <img
-            src="payment.jpeg"
+            src="Payment.jpeg"
             alt="Payment QR Code"
             style="width:100%; max-width:300px; border-radius:14px; margin:0 auto; display:block; border:1px solid var(--border);"
           />
@@ -881,38 +895,41 @@
       <p class="section-sub fade-in">Every Pro and Premium session is conducted by professionals who've been hired by India's top companies and know exactly what gets candidates shortlisted.</p>
       <div class="experts-grid">
 
+        <!-- Mudit -->
         <div class="expert-card fade-in">
           <div class="expert-top">
             <div class="expert-avatar">MS</div>
             <div class="expert-info">
               <h3>Mudit Sahai</h3>
-              <p class="role">Brand Manager — Hindustan Unilever (HUL)</p>
-              <p class="role" style="margin-top:2px;">Ex Adani Wilmar</p>
+              <p class="role-current">Brand Manager — Hindustan Unilever (HUL)</p>
+              <p class="role-former">Previously at Adani Wilmar</p>
               <span class="expert-badge">IMT Ghaziabad · Marketing &amp; Strategy</span>
             </div>
           </div>
           <p class="expert-quote">"Most candidates I see in interviews have decent skills but a terrible resume — it simply doesn't reflect what they're capable of. At IMTIIM, we close that gap. I've sat across the table from hundreds of applicants at HUL and I know exactly what a shortlist-worthy profile looks like. I'll help you build one."</p>
         </div>
 
+        <!-- Srujani -->
         <div class="expert-card fade-in">
           <div class="expert-top">
             <div class="expert-avatar">SR</div>
             <div class="expert-info">
               <h3>Srujani</h3>
-              <p class="role">Retail Operations Lead — Tata Westside</p>
-              <p class="role" style="margin-top:2px;">Ex Nykaa &amp; Landmark Group Dubai</p>
+              <p class="role-current">Retail Operations Lead — Tata Westside</p>
+              <p class="role-former">Previously at Nykaa &amp; Landmark Group, Dubai</p>
               <span class="expert-badge">MBA · Retail &amp; Operations Management</span>
             </div>
           </div>
           <p class="expert-quote">"Getting hired in retail and operations is about storytelling — numbers, leadership, and impact. I've reviewed hundreds of CVs and most people undersell themselves badly. In our sessions, I help you articulate your value the way top companies want to see it. The difference between a rejection and a call-back is often just one line on your resume."</p>
         </div>
 
+        <!-- Udit -->
         <div class="expert-card fade-in">
           <div class="expert-top">
             <div class="expert-avatar">UD</div>
             <div class="expert-info">
               <h3>Udit</h3>
-              <p class="role">Marketing &amp; Brand Manager — VIP Industries</p>
+              <p class="role-current">Marketing &amp; Brand Manager — VIP Industries</p>
               <span class="expert-badge">IMT Nagpur · Marketing &amp; Brand Management</span>
             </div>
           </div>
