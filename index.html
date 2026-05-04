@@ -341,8 +341,22 @@
     .modal-back-btn:hover { text-decoration: underline; }
 
     /* ── EXPERTS ── */
-    .experts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-    @media (max-width: 720px) { .experts-grid { grid-template-columns: 1fr; } }
+    .experts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    /* Last row: 2 cards — span them so they sit centred */
+    .experts-grid .expert-card:nth-child(4) { grid-column: 1 / 2; }
+    .experts-grid .expert-card:nth-child(5) { grid-column: 2 / 3; }
+    @media (max-width: 900px) {
+      .experts-grid { grid-template-columns: repeat(2, 1fr); }
+      .experts-grid .expert-card:nth-child(4) { grid-column: auto; }
+      .experts-grid .expert-card:nth-child(5) { grid-column: auto; }
+    }
+    @media (max-width: 560px) {
+      .experts-grid { grid-template-columns: 1fr; }
+    }
     .expert-card {
       background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 32px 28px; box-shadow: var(--shadow); transition: box-shadow .25s, transform .25s;
@@ -629,7 +643,7 @@
         <div class="modal-qr-section">
           <p>👇 Scan with any UPI app</p>
           <img
-            src="payment.jpeg"
+            src="Payment.jpeg"
             alt="Payment QR Code"
             style="width:100%; max-width:300px; border-radius:14px; margin:0 auto; display:block; border:1px solid var(--border);"
           />
@@ -945,15 +959,16 @@
             </div>
             <div class="expert-info">
               <h3>Udit Sahai</h3>
-             <p class="role-current">Sales — VIP Industries</p>
-              <span class="expert-badge">IMT Ghaziabad · Marketing &amp; Brand Management</span>
+              <p class="role-current">Marketing &amp; Brand Manager — VIP Industries</p>
+              <p class="role-former">Previously at SKF India</p>
+              <span class="expert-badge">IMT Nagpur · Marketing &amp; Brand Management</span>
               <a class="expert-linkedin" href="https://www.linkedin.com/in/udit-sahai24/" target="_blank" rel="noopener">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 LinkedIn
               </a>
             </div>
           </div>
-          <p class="expert-quote">"nt months on the other sid</p>
+          <p class="expert-quote">"I spent months on the other side — sending out applications with zero callbacks. When I finally cracked it, I realised the issue was never my experience. It was how I was presenting it. Now I help others skip that painful phase entirely. If you're qualified but not getting calls, let's fix that together — it's almost always solvable in one session."</p>
         </div>
 
         <!-- Jatin -->
@@ -965,6 +980,7 @@
             <div class="expert-info">
               <h3>Jatin Chugh</h3>
               <p class="role-current">Brand Specialist — Amazon</p>
+              <p class="role-former">Previously at PVR's 4700BC &amp; White Pigeon Films</p>
               <span class="expert-badge">IMT Ghaziabad · Brand &amp; Marketing</span>
               <a class="expert-linkedin" href="https://www.linkedin.com/in/jatin-chugh-47664819b/" target="_blank" rel="noopener">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -973,6 +989,26 @@
             </div>
           </div>
           <p class="expert-quote">"Working at Amazon, I see what world-class hiring looks like up close. The bar is high — and most candidates don't fail because they lack talent, they fail because their resume doesn't communicate it. In our sessions, I help you speak the language that top companies actually want to hear. One sharp, focused conversation can completely change how recruiters see you."</p>
+        </div>
+
+        <!-- Bhupesh -->
+        <div class="expert-card fade-in">
+          <div class="expert-top">
+            <div class="expert-avatar">
+              <img src="bhupesh.jpeg" alt="Bhupesh Tewatia" />
+            </div>
+            <div class="expert-info">
+              <h3>Bhupesh Tewatia</h3>
+              <p class="role-current">Marketing — Liebherr Appliances</p>
+              <p class="role-former">Previously at Reliance Retail</p>
+              <span class="expert-badge">MBA · Marketing &amp; Brand Strategy</span>
+              <a class="expert-linkedin" href="https://www.linkedin.com/in/bhupeshtewatia/" target="_blank" rel="noopener">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <p class="expert-quote">"Having worked across Reliance Retail and now Liebherr, I've seen how drastically hiring standards vary across industries — and how most candidates pitch themselves the same generic way regardless. In our sessions, I help you tailor your story to your target company, not just clean up your CV. That specificity is what actually gets you the call."</p>
         </div>
 
       </div>
