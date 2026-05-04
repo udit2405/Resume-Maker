@@ -572,7 +572,7 @@
         </div>
         <div class="modal-plan-picker">
           <!-- Starter -->
-          <div class="modal-plan-option" id="mpo-starter" onclick="pickModalPlan('starter','₹99','Starter Plan')">
+          <div class="modal-plan-option" id="mpo-starter" onclick="pickModalPlan('starter','₹199','Starter Plan')">
             <div class="mpo-left">
               <div class="mpo-radio"></div>
               <div class="mpo-info">
@@ -594,15 +594,15 @@
             <span class="mpo-price">₹999</span>
           </div>
           <!-- Premium -->
-          <div class="modal-plan-option" id="mpo-premium" onclick="pickModalPlan('premium','₹1,499','Premium Plan')">
+          <div class="modal-plan-option" id="mpo-premium" onclick="pickModalPlan('premium','₹2,499','Premium Plan')">
             <div class="mpo-left">
               <div class="mpo-radio"></div>
               <div class="mpo-info">
-                <span class="mpo-name">Premium — ₹1,499</span>
+                <span class="mpo-name">Premium — ₹2,499</span>
                 <span class="mpo-desc">AI resume + 3 live sessions + LinkedIn + outreach strategy</span>
               </div>
             </div>
-            <span class="mpo-price">₹1,499</span>
+            <span class="mpo-price">₹2,499</span>
           </div>
         </div>
         <div class="modal-footer">
@@ -760,7 +760,7 @@
           </div>
         </div>
         <div class="track-card track-premium fade-in">
-          <span class="track-badge">Premium — ₹1,499</span>
+          <span class="track-badge">Premium — ₹2,499</span>
           <h3>AI + 3 Sessions + Full Strategy</h3>
           <div class="track-steps">
             <div class="track-step"><div class="track-step-dot"></div><span>Everything in Pro — AI resume + 1st expert session</span></div>
@@ -885,11 +885,11 @@
         </div>
 
         <!-- Premium -->
-        <div class="price-card fade-in" id="plan-premium" onclick="selectPlan('premium','₹1,499')">
+        <div class="price-card fade-in" id="plan-premium" onclick="selectPlan('premium','₹2,499')">
           <div class="price-header">
             <h3>Premium</h3>
             <p class="price-tagline">For candidates who want the full edge</p>
-            <div class="price-amount">₹1,499 <span>one-time</span></div>
+            <div class="price-amount">₹2,499 <span>one-time</span></div>
           </div>
           <ul class="price-features">
             <li>Everything in Pro</li>
@@ -900,8 +900,8 @@
             <li>Priority 24hr Resume Turnaround</li>
           </ul>
           <div class="price-card-actions">
-            <button class="plan-select-btn" onclick="event.stopPropagation(); selectPlan('premium','₹1,499')">Select Premium</button>
-            <button class="pay-now-btn" onclick="event.stopPropagation(); selectAndPay('premium','₹1,499')">💳 Pay ₹1,499 &amp; Get Started</button>
+            <button class="plan-select-btn" onclick="event.stopPropagation(); selectPlan('premium','₹2,499')">Select Premium</button>
+            <button class="pay-now-btn" onclick="event.stopPropagation(); selectAndPay('premium','₹2,499')">💳 Pay ₹2,499 &amp; Get Started</button>
           </div>
         </div>
 
@@ -1294,7 +1294,7 @@
     const GOOGLE_FORM_LINK =
       "https://docs.google.com/forms/d/e/1FAIpQLSf50XVvaQtv4ybl7a2lwWLykOw6VsZJGf0G_dQAGJ1xg3uJwg/viewform";
 
-    const PLAN_PRICES = { starter: '₹99', pro: '₹999', premium: '₹1,499' };
+    const PLAN_PRICES = { starter: '₹99', pro: '₹999', premium: '₹2,499' };
     const PLAN_LABELS = { starter: 'Starter Plan', pro: 'Pro Plan', premium: 'Premium Plan' };
 
     let modalSelectedPlan  = null;
