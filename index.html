@@ -436,19 +436,74 @@
     .testi-role { font-size: .8rem; color: var(--muted); }
 
     /* ── WHO IT'S FOR ── */
-    .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
     .who-item {
-      background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 22px 20px; display: flex; align-items: flex-start; gap: 14px;
-      box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s;
+      position: relative;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: var(--shadow);
+      transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease;
+      overflow: hidden;
+      isolation: isolate;
     }
-    .who-item:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .who-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(79,70,229,.04) 0%, rgba(124,58,237,.04) 100%);
+      opacity: 0;
+      transition: opacity .3s ease;
+      z-index: -1;
+    }
+    .who-item::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--accent) 0%, #7c3aed 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .who-item:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+      border-color: rgba(79,70,229,.25);
+    }
+    .who-item:hover::before { opacity: 1; }
+    .who-item:hover::after { transform: scaleX(1); }
+    .who-item:hover .who-icon {
+      background: linear-gradient(135deg, var(--accent) 0%, #7c3aed 100%);
+      color: #fff;
+      transform: scale(1.05) rotate(-4deg);
+    }
     .who-icon {
-      width: 40px; height: 40px; border-radius: 10px; background: var(--accent-light);
-      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent-light) 0%, #f5f3ff 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.45rem;
+      flex-shrink: 0;
+      box-shadow: inset 0 0 0 1px rgba(79,70,229,.08);
+      transition: background .3s ease, color .3s ease, transform .3s ease;
     }
-    .who-text h4 { font-size: .9rem; font-weight: 700; margin-bottom: 3px; }
-    .who-text p  { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+    .who-text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -.2px;
+      color: var(--text);
+    }
+    .who-text p {
+      font-size: .86rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
 
     /* ── FINAL CTA ── */
     .cta-section { background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%); padding: 96px 0; text-align: center; }
@@ -672,6 +727,7 @@
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#features">What You Get</a></li>
         <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#experts">Your Mentors</a></li>
         <li><a href="#testimonials">Reviews</a></li>
       </ul>
       <div class="nav-cta">
@@ -726,12 +782,12 @@
         <div class="how-intro-card fade-in">
           <div class="step-num">1</div>
           <h3>Upload Your Resume</h3>
-          <p>Submit your current CV through our secure Google Form. Attach your payment screenshot. Takes under 2 minutes — no account, no signup needed.</p>
+          <p>Make the payment, Submit your current CV through our secure Google Form. Takes under 1 minutes —</p>
         </div>
         <div class="how-intro-card fade-in">
           <div class="step-num">2</div>
           <h3>We Get to Work</h3>
-          <p>Based on your plan, our AI engine begins restructuring your resume for ATS systems — and if you've picked Pro or Premium, we schedule your live session with an IMT/IIM expert immediately.</p>
+          <p>Based on your plan, our AI engine begins restructuring your resume for ATS systems — and if you've picked Pro or Premium, we schedule your live session with the best suitable mentor for you immediately.</p>
         </div>
       </div>
 
@@ -1260,8 +1316,8 @@
         <h3>Is my resume and personal info safe?</h3>
         <p>Absolutely. All your information is kept strictly confidential. We never share your data with third parties. See our Privacy Policy for full details.</p>
 
-        <h3>What if I'm not happy with the result?</h3>
-        <p>We offer a full refund within 48 hours of delivery — no questions asked. See our Refund Policy for details.</p>
+        <h3>How soon will I see results after using IMTIIM?</h3>
+        <p>Most candidates start noticing more recruiter responses and interview calls within <strong>2–3 weeks</strong> of using their revamped resume. Results depend on the roles you apply to and how actively you reach out — but a stronger resume consistently improves your shortlist rate.</p>
       </div>
     </div>
   </div>
